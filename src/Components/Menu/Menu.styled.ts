@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const MenuContainer = styled.ul`
+export const MenuContainerStyled = styled.ul`
     width: 100%;
     height: fit-content;
     display: flex;

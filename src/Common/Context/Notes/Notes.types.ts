@@ -1,4 +1,4 @@
-export type noteType = { label: string, id: string, icon: any }
+export type noteType = { label: string, id: string, icon: any, color: string }
 export interface INotesContext {
     notesDefault: noteType[] | []
     notes: noteType[] | []

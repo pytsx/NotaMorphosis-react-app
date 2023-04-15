@@ -1,22 +1,33 @@
 import styled from "@emotion/styled";
 import { IActive } from "./MenuItem.type";
 
+
 export const MenuItemStyled = styled.li<IActive>`
-    padding: .64rem .64rem;
     margin-top: .2rem;
-    border-radius: .16rem;
     list-style: none;
+    width: 100%;
+    cursor: ${props => props.isActive ? 'default' : 'pointer'};
+    user-select:none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    `
+export const MenuItemWrapperStyled = styled.span<IActive>`
+    padding: .64rem .64rem;
+    border-radius: .16rem;
+    width: 100%;
+    position: relative;
     display: flex;
     align-item: center;
     justify-content: start;
-    position: relative;
-    cursor: ${props => props.isActive ? 'default' : 'pointer'};
     background: ${props => props.isActive ? '#Fafafa24' : 'transparent'};
-    user-select:none;
     &:hover{
         background: #Fafafa24;
     }
 `
+
+
 export const MenuItemActiveIndicator = styled.span<IActive>`
     opacity: ${props => props.isActive ? '1' : '0'};
     transition: all 50ms ease-in-out;

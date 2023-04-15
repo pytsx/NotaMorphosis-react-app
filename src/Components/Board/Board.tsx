@@ -7,14 +7,16 @@ import { AddInput } from "./AddInput";
 
 export const Board = () => {
     const { currentNote } = useNotes()
+    let primaryColor = currentNote?.color + 'de'
+    let color = currentNote?.color
     return (
         <Stack direction="column" justify="space-between" width="calc(100% - 320px)" height="98%" style={{ background: gray200, margin: '.4rem .4rem .4rem .2rem', borderRadius: '.32rem' }}>
 
             <Stack style={{ margin: '2.4rem', gap: '.6rem' }}>
-                <Typography variant="h1">
+                <Typography color={primaryColor} variant="h1">
                     {currentNote?.icon}
                 </Typography>
-                <Typography variant="h1">
+                <Typography color={primaryColor} variant="h1">
                     {currentNote?.label}
                 </Typography>
             </Stack>
@@ -33,7 +35,7 @@ export const Board = () => {
                     backdropFilter: 'blur(4px)',
                     padding: '.8rem 2.4rem 3.2rem 2.4rem',
                 }}>
-                <AddInput />
+                <AddInput color={String(color)} />
             </Stack>
 
         </Stack>

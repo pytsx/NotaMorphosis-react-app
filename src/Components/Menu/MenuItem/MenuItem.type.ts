@@ -11,6 +11,8 @@ export interface IMenuItemContainer {
 export interface IMenuItem extends IMenuItemContainer {
     isActive: boolean
     handleClick: (e: noteType) => void
+    onContextMenu: (e: any) => void
+    contextMenuActive: boolean
 }
 
 export interface IActive {
