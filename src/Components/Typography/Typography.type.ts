@@ -12,6 +12,7 @@ export interface ITypography {
     letterSpace?: string
     text?: string
     sx?: {}
+    display?: string
 }
 export interface ITypographyStyled extends ITypography {
 

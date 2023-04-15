@@ -8,6 +8,7 @@ const typographyBase = ({ size, family, weight, lineHeight, color, letterSpace, 
     line-height: ${lineHeight};
     color: ${color};
     letter-spacing: ${letterSpace};
+    display: ${letterSpace};
     ${sx};
 
 `;

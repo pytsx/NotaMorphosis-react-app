@@ -10,6 +10,7 @@ export const Typography = ({
     color = '#c9c9c9',
     lineHeight = `${p * 0.06}`,
     letterSpace = `-.020rem`,
+    display = `inline`,
     text,
     sx
 }: ITypography) => {
@@ -44,6 +45,7 @@ export const Typography = ({
             color={color}
             letterSpace={letterSpace}
             sx={sx}
+            display={display}
         >
             {children ? children : text}
         </Component>

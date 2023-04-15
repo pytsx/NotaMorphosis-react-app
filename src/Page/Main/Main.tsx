@@ -1,5 +1,5 @@
 import { useNotes } from "../../Common/Context"
-import { AvatarContainer, Divider, MenuContainer, Search, Stack, Typography } from "../../Components"
+import { AvatarContainer, Board, Divider, MenuContainer, Search, Stack, Typography } from "../../Components"
 import { Button } from "../../Components/Button"
 import { Input } from "../../Components/Input"
 import { gray200, gray180 } from "../Layout/Layout"
@@ -44,23 +44,7 @@ export const MainPage = () => {
                 </Stack>
 
             </Stack>
-            <Stack direction="column" justify="space-between" width="calc(100% - 320px)" height="98%" style={{ background: gray200, margin: '.4rem .4rem .4rem .2rem', borderRadius: '.32rem' }}>
-
-                <Stack style={{ margin: '2.4rem', gap: '.6rem' }}>
-                    <Typography variant="h1">
-                        {currentNote?.icon}
-                    </Typography>
-                    <Typography variant="h1">
-                        {currentNote?.label}
-                    </Typography>
-                </Stack>
-
-
-                <Stack width="calc(100% - 2.4rem * 2)" style={{ margin: '2.4rem', gap: '.6rem' }}>
-                    <Input style={{ width: '100%', padding: '.4rem .8rem' }} placeholder="digite algo aqui" />
-                </Stack>
-
-            </Stack>
+            <Board />
 
         </MainContainerStyled >
     )

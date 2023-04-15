@@ -19,11 +19,66 @@ export const NotesProvider = ({ children }: IChildren) => {
 
 
     const values = [
-        { label: 'Meu Dia', id: uuidv4(), icon: <RiSunFoggyLine /> },
-        { label: 'Importante', id: uuidv4(), icon: <RiCheckboxBlankCircleLine /> },
-        { label: 'Planejado', id: uuidv4(), icon: <RiCalendarTodoLine /> },
-        { label: 'Atribuído a mim', id: uuidv4(), icon: <RiUserShared2Line /> },
-        { label: 'Email sinalizado', id: uuidv4(), icon: <RiMailLine /> },
+        {
+            label: 'Meu Dia',
+            id: uuidv4(),
+            icon: <RiSunFoggyLine />,
+            notes: [
+                {
+                    id: uuidv4(),
+                    label: '',
+                    description: ''
+                }
+            ]
+        },
+        {
+            label: 'Importante',
+            id: uuidv4(),
+            icon: <RiCheckboxBlankCircleLine />,
+            notes: [
+                {
+                    id: uuidv4(),
+                    label: '',
+                    description: ''
+                }
+            ]
+        },
+        {
+            label: 'Planejado',
+            id: uuidv4(),
+            icon: <RiCalendarTodoLine />,
+            notes: [
+                {
+                    id: uuidv4(),
+                    label: '',
+                    description: ''
+                }
+            ]
+        },
+        {
+            label: 'Atribuído a mim',
+            id: uuidv4(),
+            icon: <RiUserShared2Line />,
+            notes: [
+                {
+                    id: uuidv4(),
+                    label: '',
+                    description: ''
+                }
+            ]
+        },
+        {
+            label: 'Email sinalizado',
+            id: uuidv4(),
+            icon: <RiMailLine />,
+            notes: [
+                {
+                    id: uuidv4(),
+                    label: '',
+                    description: ''
+                }
+            ]
+        },
     ];
 
     const values1 = [
