@@ -28,15 +28,7 @@ export const NotesProvider = ({ children }: IChildren) => {
 
     const values1 = [
         { label: 'Lista 1', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 2', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 3', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 4', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 5', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 6', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 7', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 8', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 9', id: uuidv4(), icon: <RiFileListLine /> },
-        { label: 'Lista 10', id: uuidv4(), icon: <RiFileListLine /> },
+
     ]
 
     React.useEffect(() => {
