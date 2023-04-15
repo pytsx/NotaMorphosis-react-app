@@ -13,8 +13,8 @@ export interface IAddInput {
 export const AddInput = ({ color }: IAddInput) => {
     const [focus, setFocus] = React.useState<boolean>(false)
     const [hover, setHover] = React.useState<boolean>(false)
-    let primaryColor = color + '16'
-    let secondaryColor = color + '0a'
+    let primaryColor = '#c9c9c9' + '16'
+    let secondaryColor = '#c9c9c9' + '0a'
     return (
         <Stack
             onMouseEnter={() => setHover(true)}
