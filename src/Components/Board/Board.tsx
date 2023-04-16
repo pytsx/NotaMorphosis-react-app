@@ -1,6 +1,5 @@
 import { useNotes } from "../../Common/Context";
 import { gray200 } from "../../Page/Layout/Layout";
-import { Input } from "../Input";
 import { Stack } from "../Stack";
 import { Typography } from "../Typography";
 import { AddInput } from "./AddInput";
@@ -11,9 +10,17 @@ export const Board = () => {
     let primaryColor = currentNote?.color + 'de'
     let color = currentNote?.color
     return (
-        <Stack direction="column" justify="start" width="calc(100% - 320px)" height="98%" style={{ background: gray200, margin: '.4rem .4rem .4rem .2rem', borderRadius: '.32rem' }}>
+        <Stack direction="column" justify="start" width="calc(100% - 280px)" height="100%" style={{ background: gray200, margin: '.4rem .4rem .4rem .2rem', borderRadius: '.32rem' }}>
 
-            <Stack style={{ margin: '2.4rem', gap: '.6rem' }}>
+            <Stack
+                position='absolute'
+                style={{
+                    gap: '.6rem',
+                    background: '#1d1d1d9f',
+                    backdropFilter: 'blur(12px)',
+                    padding: '2.4rem 2.4rem 1.2rem 2.4rem',
+                    zIndex: 2000
+                }}>
                 <Typography color={primaryColor} variant="h1">
                     {currentNote?.icon}
                 </Typography>
@@ -22,13 +29,20 @@ export const Board = () => {
                 </Typography>
             </Stack>
 
-            <Stack height="100%" width="100%" style={{ padding: '0 2.4rem' }}>
-                <Notes />
+
+            <Stack
+                position="relative"
+                height="fit-content"
+                width="100%"
+                style={{
+                    padding: '6.4rem 2.4rem 8rem 2.4rem',
+                    overflowY: 'scroll',
+                }}>
+                <div style={{ width: '100%', height: 'fit-content' }}>
+                    <Notes />
+                </div>
+
             </Stack>
-
-
-
-
 
             <Stack
                 width="100%"
@@ -37,8 +51,10 @@ export const Board = () => {
                     bottom: 0,
                     visibility: currentNote ? 'visible' : 'hidden',
                     background: '#1d1d1d9f',
-                    backdropFilter: 'blur(6px)',
-                    padding: '.8rem 2.4rem 3.2rem 2.4rem',
+                    backdropFilter: 'blur(12px)',
+                    padding: '1.2rem 2.4rem 2.4rem 2.4rem',
+                    zIndex: 2000
+
                 }}>
                 <AddInput color={String(color)} />
             </Stack>

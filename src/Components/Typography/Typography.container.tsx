@@ -22,7 +22,7 @@ export const Typography = ({
         h5: p * 1.16 * .99,
         h6: p * .9,
         p,
-        captcha: p * 0.8
+        captcha: p * 0.64
     };
 
 

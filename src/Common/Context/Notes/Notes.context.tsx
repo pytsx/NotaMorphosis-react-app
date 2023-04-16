@@ -3,44 +3,113 @@ import { IChildren } from "../../Types";
 import { INotesContext, noteType } from "./Notes.types";
 import { useAPI } from "../APIcontext";
 import { v4 as uuidv4 } from 'uuid'
-import { RiFileListLine, RiSunFoggyLine, RiCheckboxBlankCircleLine, RiCalendarTodoLine, RiUserShared2Line, RiMailLine } from 'react-icons/ri';
+import { RiFileListLine, RiSunFoggyLine, RiCheckboxBlankCircleLine, RiCalendarTodoLine, RiUserShared2Line, RiMailLine, RiStarLine } from 'react-icons/ri';
 
 export const NotesContext = React.createContext<INotesContext>({
     notes: [],
     notesDefault: [],
-    handleCurrentNote: () => { }
+    handleCurrentNote: () => { },
+    currentNote: undefined
 })
 
 export const NotesProvider = ({ children }: IChildren) => {
     const [notes, setNotes] = React.useState<noteType[]>([])
     const [notesDefault, setNotesDefault] = React.useState<noteType[]>([])
-    const [currentNote, setCurrentNote] = React.useState<noteType>()
-    const { data } = useAPI()
+    const [currentNote, setCurrentNote] = React.useState<noteType | undefined>()
+
+
+
 
 
     const values = [{
         label: 'Meu Dia',
         id: uuidv4(),
         icon: <RiSunFoggyLine />,
-        color: '#F9D584', // cor de base        
+        color: '#C6A4D1', // cor de base        
         notes: [
             {
                 id: uuidv4(),
-                label: '',
-                description: ''
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
+            },
+            {
+                id: uuidv4(),
+                label: 'teste',
+                description: 'description'
             }
+
         ]
     },
     {
         label: 'Importante',
         id: uuidv4(),
-        icon: <RiCheckboxBlankCircleLine />,
-        color: '#F98F84', // cor complementar
+        icon: <RiStarLine />,
+        color: '#B8A3C3', // cor complementar
         notes: [
             {
                 id: uuidv4(),
-                label: '',
-                description: ''
+                label: 'teste',
+                description: 'description'
             }
         ]
     },
@@ -52,8 +121,8 @@ export const NotesProvider = ({ children }: IChildren) => {
         notes: [
             {
                 id: uuidv4(),
-                label: '',
-                description: ''
+                label: 'teste',
+                description: 'description'
             }
         ]
     },
@@ -61,12 +130,12 @@ export const NotesProvider = ({ children }: IChildren) => {
         label: 'Atribuído a mim',
         id: uuidv4(),
         icon: <RiUserShared2Line />,
-        color: '#F9B384', // outra variação da cor complementar
+        color: '#C8A8AE', // outra variação da cor complementar
         notes: [
             {
                 id: uuidv4(),
-                label: '',
-                description: ''
+                label: 'teste',
+                description: 'description'
             }
         ]
     },
@@ -74,12 +143,12 @@ export const NotesProvider = ({ children }: IChildren) => {
         label: 'Email sinalizado',
         id: uuidv4(),
         icon: <RiMailLine />,
-        color: '#84F9A0', // outra variação da cor de base
+        color: '#D1C4A4', // outra variação da cor de base
         notes: [
             {
                 id: uuidv4(),
-                label: '',
-                description: ''
+                label: 'teste',
+                description: 'description'
             }
         ]
     },
@@ -87,7 +156,17 @@ export const NotesProvider = ({ children }: IChildren) => {
 
 
     const values1 = [
-        { label: 'Lista 1', id: uuidv4(), icon: <RiFileListLine />, color: '#c9c9c9' },
+        {
+            label: 'Lista 1',
+            id: uuidv4(),
+            icon: <RiFileListLine />,
+            color: '#D1C4A4',
+            notes: [{
+                id: uuidv4(),
+                label: '',
+                description: 'description'
+            }]
+        },
 
     ]
 

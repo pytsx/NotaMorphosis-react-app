@@ -34,7 +34,7 @@ export const AddInput = ({ color }: IAddInput) => {
                 height="100%"
                 align="center"
                 justify="center">
-                <Typography variant="h1" color={color}>
+                <Typography variant="h2" color={color}>
                     {
                         focus
                             ? <RiCheckboxBlankCircleLine />
