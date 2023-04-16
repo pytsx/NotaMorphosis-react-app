@@ -1,3 +1,4 @@
+import { MdAdd, MdList } from "react-icons/md"
 import { useNotes } from "../../Common/Context"
 import { useTheme } from "../../Common/Context/Theme"
 import { AvatarContainer, Board, MenuContainer, Search, Stack, Typography } from "../../Components"
@@ -53,14 +54,14 @@ export const MainPage = () => {
                     width="100%"
                     height="3rem"
                     padding='.32rem .32rem 0 .32rem'
+                    gap='0'
                     style={{
                         bottom: 1,
                         background: String(theme?.palette.secondary),
-                        borderTop: '1px solid #c9c9c92f'
                     }} >
 
-                    <Button height='1.2rem' text="Nova lista" width='calc(100% - 20px)' onClick={() => { }} />
-                    <Button height='1.2rem' justify="center" variant="h2" sx={{ 'justifyContent': 'center', 'alignItems': 'center' }} width='20px' text="+" onClick={() => { }} />
+                    <Button icon={<MdAdd />} height='1.2rem' text="Nova lista" width='calc(100% - 20px)' onClick={() => { }} />
+                    <Button width="40px" icon={<MdList />} height='1.2rem' justify="center" variant="h2" sx={{ 'justifyContent': 'center', 'alignItems': 'center' }} onClick={() => { }} />
                 </Stack>
 
             </Stack>

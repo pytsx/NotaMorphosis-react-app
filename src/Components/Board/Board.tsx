@@ -15,7 +15,7 @@ export const BoardComponent = ({
         direction="column"
         justify="start"
         width="calc(100% - 280px)"
-        height="100%"
+        height="98%"
         style={{
             background: String(theme?.palette?.primary),
             margin: '.4rem .4rem .4rem .2rem',
@@ -25,6 +25,7 @@ export const BoardComponent = ({
         <Stack
             position='absolute'
             style={{
+                display: note ? 'flex' : 'none',
                 gap: '.6rem',
                 background: '#1d1d1d9f',
                 backdropFilter: 'blur(12px)',

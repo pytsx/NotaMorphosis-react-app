@@ -15,7 +15,8 @@ export interface IButtonStyled extends IActive {
 }
 
 export interface IButton extends IButtonStyled, ITypography {
-    text: string
+    text?: string
+    icon?: any
     onClick: () => void
     sx?: {}
 }

@@ -3,7 +3,7 @@ import { IButtonStyled } from "./Button.type";
 
 export const ButtonStyled = styled.button<IButtonStyled>`
     all: unset;
-    padding: .64rem .64rem;
+    padding: .64rem .0rem;
 
     position: ${props => props.position ? props.position : 'relative'};
     bottom: ${props => props.bottom};
@@ -11,7 +11,7 @@ export const ButtonStyled = styled.button<IButtonStyled>`
     top: ${props => props.top};
     right: ${props => props.right};
     cursor: pointer;
-    border-radius: ${props => props?.theme?.shape?.borderRadius};
+    border-radius: ${props => props?.theme?.shape?.borderRadius}rem;
     width: ${props => props.width ? props.width : '100%'};
     height: ${props => props.height ? props.height : '100%'};
     background: ${props => props.isActive ? '#Fafafa24' : 'transparent'};

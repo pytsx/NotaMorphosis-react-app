@@ -14,9 +14,10 @@ export const Button = ({
     top,
     width,
     sx,
-    variant,
+    variant = 'h5',
     height,
     justify,
+    icon
 }: IButton) => {
     const { theme } = useTheme()
     return (
@@ -34,13 +35,22 @@ export const Button = ({
         >
             <Stack
                 align="center"
-                justify={justify ? justify : 'space-between'}
+                justify={justify ? justify : 'start'}
                 height={height}
                 width={width}
+                direction="row"
             >
-                <Typography variant={variant}>
-                    {text}
-                </Typography>
+                <div style={{ width: 'fit-content', padding: '.4rem', display: icon ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center' }}>
+
+                    <Typography variant="h2">
+                        {icon}
+                    </Typography>
+                </div>
+                <div style={{ width: '100%', padding: '.4rem', display: text ? 'flex' : 'none', alignItems: 'center', justifyContent: 'start' }}>
+                    <Typography variant={variant}>
+                        {text}
+                    </Typography>
+                </div>
             </Stack>
         </ButtonStyled>
     )
