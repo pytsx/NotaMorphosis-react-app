@@ -1,3 +1,4 @@
+import { Theme } from "../../Common/Context/Theme/Theme.types"
 import { IActive } from "../Menu/MenuItem/MenuItem.type"
 import { ITypography } from "../Typography/Typography.type"
 
@@ -10,6 +11,7 @@ export interface IButtonStyled extends IActive {
     width?: string
     height?: string
     justify?: string
+    theme?: Theme
 }
 
 export interface IButton extends IButtonStyled, ITypography {

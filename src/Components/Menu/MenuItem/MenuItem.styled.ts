@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { IActive } from "./MenuItem.type";
+import { IActive, IMenuItemWrapperStyled } from "./MenuItem.type";
 
 
 export const MenuItemStyled = styled.li<IActive>`
@@ -12,10 +12,10 @@ export const MenuItemStyled = styled.li<IActive>`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    `
-export const MenuItemWrapperStyled = styled.span<IActive>`
+`
+export const MenuItemWrapperStyled = styled.span<IMenuItemWrapperStyled>`
     padding: .64rem .64rem;
-    border-radius: .16rem;
+    border-radius: ${props => props?.theme?.shape?.borderRadius}rem;
     width: 100%;
     position: relative;
     display: flex;

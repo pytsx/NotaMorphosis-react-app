@@ -7,4 +7,5 @@ export interface INoteContainer {
 export interface INoteComponent extends INoteContainer {
     hover: boolean
     handleHover: () => void
+    borderRadius: string
 }

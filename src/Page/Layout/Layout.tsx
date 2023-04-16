@@ -1,13 +1,13 @@
+import { useTheme } from "../../Common/Context/Theme"
 import { IChildren } from "../../Common/Types"
 import { LayoutContainer } from "./Layout.styled"
 
-export const gray200 = '#1b1a19'
-export const gray180 = '#252423'
+
 
 export const Layout = ({ children }: IChildren) => {
-
+    const { theme } = useTheme()
     return (
-        <LayoutContainer style={{ background: gray180 }}>
+        <LayoutContainer style={{ background: theme?.palette.secondary }}>
             {children}
         </LayoutContainer>
     )

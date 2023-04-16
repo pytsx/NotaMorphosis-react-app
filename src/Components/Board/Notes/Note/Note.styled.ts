@@ -12,7 +12,7 @@ export const NoteContainerStyled = styled.li<IActive>`
 export const NoteWrapperStyled = styled.div<IActive>`
     width: 100%;
     height: 100%;
-    border-radius: 0.16rem;
+    
     background: ${props => props.isActive ? '#c9c9c916' : 'transparent'};
     cursor: pointer;
     padding: .64rem 0;

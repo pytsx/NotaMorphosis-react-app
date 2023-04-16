@@ -1,16 +1,25 @@
-import { Spacing, Theme, ThemeOptions } from "./Theme.types";
-import { createBreakpoints } from "./createBreakpoints";
+import { Spacing, Theme, ThemeOptions, Breakpoints } from "./Theme.types";
 import { createSpacing } from "./createSpacing";
-
+import { breackpointObjVoid, createBreakpoints } from './createBreakpoints'
 
 // Alterando o parâmetro args para um array de Theme
 function createTheme<T extends Theme>(options: ThemeOptions = {}): T {
+
+    let breackpointObj: Breakpoints = breackpointObjVoid
+    breackpointObj.xs = 500
+    breackpointObj.sm = 600
+    breackpointObj.md = 900
+    breackpointObj.lg = 1200
+    breackpointObj.xl = 1400
+
     const {
-        breakpoints: breakpointsInput = {},
+        breakpoints: breakpointsInput = breackpointObj,
         palette: paletteInput = {},
         spacing: spacingInput,
         shape: shapeInput = {},
+        typography: typographyInput = {},
     } = options;
+
 
     const breakpoints = createBreakpoints(breakpointsInput);
     const spacing = createSpacing(spacingInput as Spacing);
@@ -21,10 +30,10 @@ function createTheme<T extends Theme>(options: ThemeOptions = {}): T {
         components: {},
         palette: { mode: 'light', ...paletteInput },
         spacing,
-        shape: { borderRadius: 4, ...shapeInput },
+        shape: { borderRadius: .16, ...shapeInput },
+        typography: typographyInput
     } as T;
 
-    console.log(theme);
 
 
     return theme;

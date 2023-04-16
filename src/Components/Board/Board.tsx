@@ -1,5 +1,4 @@
 import { useNotes } from "../../Common/Context";
-import { gray200 } from "../../Page/Layout/Layout";
 import { Stack } from "../Stack";
 import { Typography } from "../Typography";
 import { AddInput } from "./AddInput";
@@ -9,7 +8,8 @@ import { Notes } from "./Notes";
 export const BoardComponent = ({
     primaryColor,
     secondaryColor,
-    note
+    note,
+    theme
 }: IBoardComponent) => (
     <Stack
         direction="column"
@@ -17,7 +17,7 @@ export const BoardComponent = ({
         width="calc(100% - 280px)"
         height="100%"
         style={{
-            background: gray200,
+            background: theme?.palette?.primary,
             margin: '.4rem .4rem .4rem .2rem',
             borderRadius: '.32rem'
         }}>

@@ -1,3 +1,4 @@
+import { useTheme } from "../../Common/Context/Theme";
 import { Captcha, H1, H2, H3, H4, H5, H6, P } from "./Typography.styled";
 import { ITypography } from "./Typography.type";
 
@@ -6,7 +7,7 @@ export const Typography = ({
     variant = 'p',
     p = 14,
     weight = 600,
-    family = "Segoe UI",
+    family,
     color = '#c9c9c9',
     lineHeight = `${p * 0.06}`,
     letterSpace = `-.020rem`,
@@ -14,6 +15,7 @@ export const Typography = ({
     text,
     sx
 }: ITypography) => {
+    const { theme } = useTheme()
     const sizes: { [key: string]: number } = {
         h1: p * 1.16 ** 4,
         h2: p * 1.16 ** 3,
@@ -39,10 +41,10 @@ export const Typography = ({
     return (
         <Component
             lineHeight={`${lineHeight}em`}
-            family={family}
+            family={family ? family : String(theme?.typography.fontFamily)}
             weight={weight}
             size={`${sizes[variant]}px`}
-            color={color}
+            color={color ? color : String(theme?.palette.typography.primary)}
             letterSpace={letterSpace}
             sx={sx}
             display={display}
@@ -51,4 +53,3 @@ export const Typography = ({
         </Component>
     );
 };
-

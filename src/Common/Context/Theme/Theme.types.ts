@@ -2,18 +2,21 @@
 export type themeType = {}
 export interface IThemeContext {
     createTheme: (newTheme: {}) => themeType
-    theme: themeType
+    theme: Theme | undefined
 }
 
 
 // Definindo tipos utilizados pelo theme
 export type Breakpoints = {
-    [key: string]: string;
+    [key: string | number]: number;
 };
-
+export type typography = {
+    [key: string]: string | number | undefined;
+}
 export type Palette = {
     mode: 'light' | 'dark';
-    [key: string]: string | number | undefined;
+    typography: typography;
+    [key: string]: string | number | undefined | {};
 };
 
 export type Shape = {
@@ -31,6 +34,7 @@ export type Theme = {
     palette: Palette;
     spacing: Spacing;
     shape: Shape;
+    typography: typography;
 };
 
 export type ThemeOptions = {
@@ -38,4 +42,6 @@ export type ThemeOptions = {
     palette?: Palette;
     spacing?: Spacing;
     shape?: Shape;
+    typography?: typography;
+
 };

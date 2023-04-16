@@ -1,4 +1,5 @@
 import { noteType } from "../../../Common/Context/Notes/Notes.types"
+import { Theme } from "../../../Common/Context/Theme/Theme.types"
 
 
 
@@ -17,4 +18,8 @@ export interface IMenuItem extends IMenuItemContainer {
 
 export interface IActive {
     isActive?: boolean
+}
+
+export interface IMenuItemWrapperStyled extends IActive {
+    theme: Theme
 }

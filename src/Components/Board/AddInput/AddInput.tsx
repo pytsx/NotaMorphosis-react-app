@@ -4,6 +4,7 @@ import { Typography } from "../../Typography"
 import { AddInputStyled } from "./AddInput.styled"
 import { RiCheckboxBlankCircleLine } from "react-icons/ri"
 import { MdAdd } from 'react-icons/md'
+import { useTheme } from "../../../Common/Context/Theme"
 
 export interface IAddInput {
     color: string
@@ -11,6 +12,8 @@ export interface IAddInput {
 
 
 export const AddInput = ({ color }: IAddInput) => {
+    const { theme } = useTheme()
+    const borderRadius = `${theme?.shape.borderRadius}rem`;
     const [focus, setFocus] = React.useState<boolean>(false)
     const [hover, setHover] = React.useState<boolean>(false)
     let primaryColor = '#c9c9c9' + '16'
@@ -25,7 +28,7 @@ export const AddInput = ({ color }: IAddInput) => {
             justify="center"
             style={{
                 background: hover || focus ? primaryColor : secondaryColor,
-                borderRadius: '.16rem',
+                borderRadius: borderRadius,
                 padding: '0 .8rem',
                 transition: 'all 100ms ease-in-out'
             }}>
@@ -43,6 +46,9 @@ export const AddInput = ({ color }: IAddInput) => {
                 </Typography>
             </Stack>
             <AddInputStyled
+                style={{
+                    borderRadius: borderRadius
+                }}
                 onBlur={() => setFocus(false)}
                 onFocus={() => setFocus(true)}
             >

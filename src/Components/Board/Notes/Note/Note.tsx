@@ -8,12 +8,16 @@ import { FaCheck } from 'react-icons/fa';
 export const NoteComponent = ({
     note,
     hover,
-    handleHover
+    handleHover,
+    borderRadius
 }: INoteComponent) => (
     <NoteContainerStyled
         isActive={false || !!note.label}
     >
-        <NoteWrapperStyled isActive={!!note.label} style={{}}>
+        <NoteWrapperStyled
+            isActive={!!note.label}
+            style={{ borderRadius }}
+        >
             <div
                 onMouseLeave={handleHover}
                 onMouseEnter={handleHover}
