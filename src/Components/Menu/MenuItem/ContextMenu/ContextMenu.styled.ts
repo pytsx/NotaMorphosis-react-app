@@ -11,6 +11,6 @@ export const ContextMenuStyled = styled(Stack)`
    
 `
 
-export const ContextMenuItemStyled = styled(MenuItemStyled)`
+export const ContextMenuItemStyled = styled.div`
 
 `

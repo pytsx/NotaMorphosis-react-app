@@ -57,7 +57,7 @@ export const MainPage = () => (
                 }} >
 
                 <Button height='1.2rem' text="Nova lista" width='calc(100% - 20px)' onClick={() => { }} />
-                <Button height='1.2rem' justify="center" variant="h2" sx={{ 'justify-content': 'center', 'align-items': 'center' }} width='20px' text="+" onClick={() => { }} />
+                <Button height='1.2rem' justify="center" variant="h2" sx={{ 'justifyContent': 'center', 'alignItems': 'center' }} width='20px' text="+" onClick={() => { }} />
             </Stack>
 
         </Stack>
