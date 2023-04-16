@@ -1,4 +1,5 @@
 import { useTheme } from "../../Common/Context/Theme"
+import { Theme } from "../../Common/Context/Theme/Theme.types"
 import { IChildren } from "../../Common/Types"
 import { LayoutContainer } from "./Layout.styled"
 
@@ -7,7 +8,7 @@ import { LayoutContainer } from "./Layout.styled"
 export const Layout = ({ children }: IChildren) => {
     const { theme } = useTheme()
     return (
-        <LayoutContainer style={{ background: theme?.palette.secondary }}>
+        <LayoutContainer theme={theme as Theme}>
             {children}
         </LayoutContainer>
     )

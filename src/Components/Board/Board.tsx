@@ -17,7 +17,7 @@ export const BoardComponent = ({
         width="calc(100% - 280px)"
         height="100%"
         style={{
-            background: theme?.palette?.primary,
+            background: String(theme?.palette?.primary),
             margin: '.4rem .4rem .4rem .2rem',
             borderRadius: '.32rem'
         }}>
