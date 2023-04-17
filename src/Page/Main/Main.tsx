@@ -1,5 +1,4 @@
 import { MdAdd, MdList } from "react-icons/md"
-import { useNotes } from "../../Common/Context"
 import { useTheme } from "../../Common/Context/Theme"
 import { AvatarContainer, Board, MenuContainer, Search, Stack, Typography } from "../../Components"
 import { Button } from "../../Components/Button"

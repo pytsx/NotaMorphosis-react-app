@@ -161,11 +161,7 @@ export const NotesProvider = ({ children }: IChildren) => {
             id: uuidv4(),
             icon: <RiFileListLine />,
             color: '#D1C4A4',
-            notes: [{
-                id: uuidv4(),
-                label: '',
-                description: 'description'
-            }]
+            notes: []
         },
 
     ]

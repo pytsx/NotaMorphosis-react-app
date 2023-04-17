@@ -4,6 +4,7 @@ import { NoteContainerStyled, NoteWrapperStyled } from "./Note.styled"
 import { INoteComponent } from "./Note.type"
 import { RiCheckboxBlankCircleLine } from "react-icons/ri"
 import { FaCheck } from 'react-icons/fa';
+import { MdStarBorder } from "react-icons/md"
 
 export const NoteComponent = ({
     note,
@@ -16,7 +17,7 @@ export const NoteComponent = ({
     >
         <NoteWrapperStyled
             isActive={!!note.label}
-            style={{ borderRadius }}
+            style={{ borderRadius, alignItems: 'center' }}
         >
             <div
                 onMouseLeave={handleHover}
@@ -24,7 +25,7 @@ export const NoteComponent = ({
                 style={{
                     position: 'relative',
                     display: !!note.id ? 'flex' : 'none',
-                    padding: '.8rem',
+                    padding: '0rem .8rem',
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
@@ -41,10 +42,30 @@ export const NoteComponent = ({
                     </Typography>
                 </div>
             </div>
-            <div style={{ margin: '.32rem' }}>
-                <Typography variant="h4" weight={400}>
-                    {note.label}
-                </Typography>
+            <div style={{
+                width: '100%',
+                padding: '.64rem .64rem .64rem 0'
+            }}>
+                <span
+                    style={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                    }}>
+                    <Typography variant="h4" weight={400}>
+                        {note.label}
+                    </Typography>
+
+                    <Typography variant="h2">
+                        <MdStarBorder />
+                    </Typography>
+                </span>
+                <span>
+                    <Typography variant="h6">
+                        {note?.description}
+                    </Typography>
+                </span>
             </div>
         </NoteWrapperStyled>
     </NoteContainerStyled >

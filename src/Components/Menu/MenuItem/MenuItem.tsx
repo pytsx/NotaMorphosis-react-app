@@ -1,5 +1,6 @@
 import { useTheme } from "../../../Common/Context/Theme"
 import { Theme } from "../../../Common/Context/Theme/Theme.types"
+import { Stack } from "../../Stack"
 import { Typography } from "../../Typography"
 import { ContextMenu } from "./ContextMenu"
 import { MenuItemActiveIndicator, MenuItemStyled, MenuItemWrapperStyled } from "./MenuItem.styled"
@@ -16,11 +17,31 @@ export const MenuItemComponent = ({ isActive, value, contextMenuActive, handleCl
                         {value.icon}
                     </Typography>
                 </div>
-                <div style={{ margin: '0 0 0 .4rem' }}>
+                <Stack
+                    justify="space-between"
+                    align='center'
+                    style={{
+                        margin: '0 0 0 .4rem',
+                    }}
+                >
                     <Typography lineHeight=".8rem" weight={400}>
                         {value?.label}
                     </Typography>
-                </div>
+                    <span style={{
+                        background: String(theme?.palette?.secondary),
+                        width: ' fit-content',
+                        height: 'fit-content',
+                        padding: '.16rem .32rem ',
+                        borderRadius: '50rem',
+                        display: value?.notes.length >= 1 ? 'flex' : 'none',
+                        boxShadow: `0px 1px 4px -1px ${String(theme?.palette?.primary)}`
+
+                    }}>
+                        <Typography lineHeight="1rem" >
+                            {value?.notes.length}
+                        </Typography>
+                    </span>
+                </Stack>
             </MenuItemWrapperStyled>
             <div style={{ display: contextMenuActive ? 'flex' : 'none' }}>
                 <ContextMenu />
