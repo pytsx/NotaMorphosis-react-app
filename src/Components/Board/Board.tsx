@@ -1,9 +1,8 @@
-import { useNotes } from "../../Common/Context";
 import { Stack } from "../Stack";
 import { Typography } from "../Typography";
 import { AddInput } from "./AddInput";
 import { IBoardComponent } from "./Board.type";
-import { Notes } from "./Notes";
+import { Tasks } from "./Notes";
 
 export const BoardComponent = ({
     primaryColor,
@@ -50,7 +49,7 @@ export const BoardComponent = ({
                 overflowY: 'scroll',
             }}>
             <div style={{ width: '100%', height: 'fit-content' }}>
-                <Notes />
+                <Tasks />
             </div>
 
         </Stack>

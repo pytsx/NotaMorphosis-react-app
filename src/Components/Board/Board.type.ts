@@ -1,4 +1,4 @@
-import { INote, noteType } from "../../Common/Context/Notes/Notes.types";
+import { noteType } from "../../Common/Context/Notes/Notes.types";
 import { Theme } from "../../Common/Context/Theme/Theme.types";
 
 export interface IBoardComponent {

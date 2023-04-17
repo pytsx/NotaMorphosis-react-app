@@ -1,22 +1,22 @@
 import { Typography } from "../../../Typography"
 import { NoteContainerStyled, NoteWrapperStyled } from "./Note.styled"
-import { INoteComponent } from "./Note.type"
+import { ITaskComponent } from "./Task.type"
 import { RiCheckboxBlankCircleLine } from "react-icons/ri"
 import { FaCheck } from 'react-icons/fa';
 import { MdStarBorder } from "react-icons/md"
 
-export const NoteComponent = ({
-    note,
+export const TaskComponent = ({
+    task,
     hover,
     handleHover,
     borderRadius
-}: INoteComponent) => (
+}: ITaskComponent) => (
     <NoteContainerStyled
-        isActive={false || !!note.label}
+        isActive={false || !!task.label}
     >
         <NoteWrapperStyled
-            isActive={!!note.label}
-            style={{ borderRadius, alignItems: 'center', display: !!note.id ? 'flex' : 'none' }}
+            isActive={!!task.label}
+            style={{ borderRadius, alignItems: 'center', display: !!task.id ? 'flex' : 'none' }}
         >
             <div
                 onMouseLeave={handleHover}
@@ -53,7 +53,7 @@ export const NoteComponent = ({
                         justifyContent: 'space-between'
                     }}>
                     <Typography variant="h4" weight={400}>
-                        {note.label}
+                        {task.label}
                     </Typography>
 
                     <Typography variant="h2">
@@ -62,7 +62,7 @@ export const NoteComponent = ({
                 </span>
                 <span>
                     <Typography variant="h6">
-                        {note?.description}
+                        {task?.description}
                     </Typography>
                 </span>
             </div>

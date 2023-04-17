@@ -1,4 +1,4 @@
-export interface INote {
+export interface ITask {
     label: string
     id: string
     description: string
@@ -8,7 +8,7 @@ export type noteType = {
     id: string,
     icon: any,
     color: string,
-    notes: INote[]
+    tasks: ITask[]
 }
 export interface INotesContext {
     notesDefault: noteType[] | []

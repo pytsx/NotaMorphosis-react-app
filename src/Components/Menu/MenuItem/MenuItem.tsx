@@ -33,12 +33,12 @@ export const MenuItemComponent = ({ isActive, value, contextMenuActive, handleCl
                         height: 'fit-content',
                         padding: '.32rem ',
                         borderRadius: '50rem',
-                        display: value?.notes.length >= 1 ? 'flex' : 'none',
+                        display: value?.tasks.length >= 1 ? 'flex' : 'none',
                         boxShadow: `0px 1px 4px -1px ${String(theme?.palette?.secondary)}`
 
                     }}>
                         <Typography variant="h6" weight={400} >
-                            {value?.notes.length}
+                            {value?.tasks.length}
                         </Typography>
                     </span>
                 </Stack>
