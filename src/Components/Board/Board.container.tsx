@@ -4,7 +4,7 @@ import { useTheme } from "../../Common/Context/Theme"
 import { Theme } from "../../Common/Context/Theme/Theme.types"
 import { BoardComponent } from "./Board"
 
-export const Board = () => {
+export const Board = ({ width }: { width?: number }) => {
     const { theme } = useTheme()
     const { currentNote } = useNotes()
     let primaryColor = currentNote?.color
@@ -16,6 +16,7 @@ export const Board = () => {
             note={currentNote as noteType}
             primaryColor={primaryColor as string}
             secondaryColor={secondaryColor}
+            width={width}
         />
     )
 }

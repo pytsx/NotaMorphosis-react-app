@@ -6,4 +6,5 @@ export interface IBoardComponent {
     primaryColor: string
     secondaryColor: string
     theme: Theme
+    width?: number
 }

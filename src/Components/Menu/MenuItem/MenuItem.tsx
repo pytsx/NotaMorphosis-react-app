@@ -31,13 +31,13 @@ export const MenuItemComponent = ({ isActive, value, contextMenuActive, handleCl
                         background: String(theme?.palette?.secondary),
                         width: ' fit-content',
                         height: 'fit-content',
-                        padding: '.16rem .32rem ',
+                        padding: '.32rem ',
                         borderRadius: '50rem',
                         display: value?.notes.length >= 1 ? 'flex' : 'none',
-                        boxShadow: `0px 1px 4px -1px ${String(theme?.palette?.primary)}`
+                        boxShadow: `0px 1px 4px -1px ${String(theme?.palette?.secondary)}`
 
                     }}>
-                        <Typography lineHeight="1rem" >
+                        <Typography variant="h6" weight={400} >
                             {value?.notes.length}
                         </Typography>
                     </span>

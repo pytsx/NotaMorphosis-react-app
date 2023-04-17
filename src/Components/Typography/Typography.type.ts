@@ -13,6 +13,7 @@ export interface ITypography {
     text?: string
     sx?: {}
     display?: string
+    wrap?: string
 }
 export interface ITypographyStyled extends ITypography {
 

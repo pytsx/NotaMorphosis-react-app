@@ -1,4 +1,3 @@
-import { useNotes } from "../../../../Common/Context"
 import { Typography } from "../../../Typography"
 import { NoteContainerStyled, NoteWrapperStyled } from "./Note.styled"
 import { INoteComponent } from "./Note.type"
@@ -17,14 +16,14 @@ export const NoteComponent = ({
     >
         <NoteWrapperStyled
             isActive={!!note.label}
-            style={{ borderRadius, alignItems: 'center' }}
+            style={{ borderRadius, alignItems: 'center', display: !!note.id ? 'flex' : 'none' }}
         >
             <div
                 onMouseLeave={handleHover}
                 onMouseEnter={handleHover}
                 style={{
                     position: 'relative',
-                    display: !!note.id ? 'flex' : 'none',
+                    display: 'flex',
                     padding: '0rem .8rem',
                     alignItems: 'center',
                     justifyContent: 'center'

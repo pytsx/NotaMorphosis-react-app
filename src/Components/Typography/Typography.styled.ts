@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ITypographyStyled } from "./Typography.type";
 
-const typographyBase = ({ size, family, weight, lineHeight, color, letterSpace, sx }: ITypographyStyled) => `
+const typographyBase = ({ size, family, weight, lineHeight, color, letterSpace, sx, wrap }: ITypographyStyled) => `
     font-size: ${size};
     font-family: ${family};
     font-weight: ${weight};
@@ -10,6 +10,7 @@ const typographyBase = ({ size, family, weight, lineHeight, color, letterSpace, 
     letter-spacing: ${letterSpace};
     display: ${letterSpace};
     ${sx};
+    white-space: ${wrap};
 
 `;
 

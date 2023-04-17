@@ -3,6 +3,10 @@ export type themeType = {}
 export interface IThemeContext {
     createTheme: (newTheme: {}) => themeType
     theme: Theme | undefined
+    windowSize: {
+        width: number
+        height: number
+    }
 }
 
 

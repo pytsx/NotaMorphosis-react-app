@@ -9,17 +9,17 @@ export const BoardComponent = ({
     primaryColor,
     secondaryColor,
     note,
-    theme
+    theme,
+    width = 0
 }: IBoardComponent) => (
     <Stack
         direction="column"
         justify="start"
-        width="calc(100% - 280px)"
-        height="98%"
+        width={`calc(100% - ${width}px)`}
+        height="100%"
         style={{
             background: String(theme?.palette?.primary),
             margin: '.4rem .4rem .4rem .2rem',
-            borderRadius: '.32rem'
         }}>
 
         <Stack

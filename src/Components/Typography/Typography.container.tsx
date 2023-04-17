@@ -13,7 +13,8 @@ export const Typography = ({
     letterSpace = `-.020rem`,
     display = `inline`,
     text,
-    sx
+    sx,
+    wrap = 'nowrap'
 }: ITypography) => {
     const { theme } = useTheme()
     const sizes: { [key: string]: number } = {
@@ -47,6 +48,7 @@ export const Typography = ({
             color={color ? color : String(theme?.palette.typography.primary)}
             letterSpace={letterSpace}
             sx={sx}
+            wrap={wrap}
             display={display}
         >
             {children ? children : text}
