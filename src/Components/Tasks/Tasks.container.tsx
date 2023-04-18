@@ -10,7 +10,7 @@ export const Tasks = () => {
 
     const handleNotes = () => {
         if (currentNote?.tasks) {
-            const diff = 10 - currentNote?.tasks.length
+            const diff = 9 - currentNote?.tasks.length
             const newTasks: any[] = [...currentNote?.tasks]
             for (let i = 0; i < diff; i++) {
                 newTasks.push(i)
