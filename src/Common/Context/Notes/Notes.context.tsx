@@ -170,7 +170,17 @@ export const NotesProvider = ({ children }: IChildren) => {
     }, [])
 
     const handleCurrentNote = (e: noteType) => {
-        setCurrentNote(e)
+        setCurrentNote(prev => {
+            if (prev) {
+                if (prev?.id != e.id) {
+                    setCurrentTask(undefined)
+                    return e
+                } else {
+                    return prev
+                }
+            }
+            return e
+        })
     }
 
     const handleCurrentTask = (e: ITask) => {
