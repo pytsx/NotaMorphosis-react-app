@@ -9,4 +9,7 @@ export interface IBoardComponent {
     width?: number
     currentTask?: ITask
     activeMenuIcon: boolean
+    onChange: (e: string) => void
+    value: string
+    index: number
 }

@@ -9,11 +9,14 @@ import { useTheme } from "../../Common/Context/Theme"
 export interface IAddInput {
     color: string
     background?: string
-    placeholder?: string
+    placeholder?: string,
+    onChange: (e: string) => void
+    value: string
+    disabled?: boolean
 }
 
 
-export const AddInput = ({ color, background, placeholder }: IAddInput) => {
+export const AddInput = ({ color, background, placeholder, onChange, value, disabled = false }: IAddInput) => {
     const { theme } = useTheme()
     const borderRadius = `${theme?.shape.borderRadius}rem`;
     const [focus, setFocus] = React.useState<boolean>(false)
@@ -54,7 +57,10 @@ export const AddInput = ({ color, background, placeholder }: IAddInput) => {
                 </Typography>
             </Stack>
             <AddInputStyled
+                disabled={disabled}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
                 color={color}
+                value={value}
                 placeholder={focus ? '' : placeholder}
                 style={{
                     borderRadius: borderRadius
@@ -65,6 +71,6 @@ export const AddInput = ({ color, background, placeholder }: IAddInput) => {
 
             </AddInputStyled>
 
-        </Stack>
+        </Stack >
     )
 }

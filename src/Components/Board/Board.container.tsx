@@ -7,10 +7,20 @@ import { BoardComponent } from "./Board"
 
 export const Board = ({ width }: { width?: number }) => {
     const { theme, windowSize } = useTheme()
-    const { currentNote } = useNotes()
+    const { currentNote, addTask } = useNotes()
+
+    const [taskLabelValue, setTaskLabelValue] = React.useState<string>('')
+    const [activeMenuIcon, setActiveMenuIcon] = React.useState<boolean>(false)
+
     let primaryColor = currentNote?.color
     let secondaryColor = currentNote?.color + 'de'
-    const [activeMenuIcon, setActiveMenuIcon] = React.useState<boolean>(false)
+
+
+    const handleTaskLabelValue = (e: string) => {
+        setTaskLabelValue(e)
+    }
+
+
     React.useEffect(() => {
         if (Number(theme?.breakpoints.md) >= windowSize.width) {
             setActiveMenuIcon(true)
@@ -18,8 +28,30 @@ export const Board = ({ width }: { width?: number }) => {
             setActiveMenuIcon(false)
         }
     }, [windowSize])
+
+    React.useEffect(() => {
+        const handleKeyPress = (e: KeyboardEvent) => {
+            if (e.code == 'Enter') {
+                addTask(taskLabelValue)
+                setTimeout(() => {
+                    setTaskLabelValue('')
+                }, 200)
+            }
+
+        }
+        document.addEventListener('keypress', handleKeyPress)
+
+        return () => {
+            document.removeEventListener('keypress', handleKeyPress)
+        }
+    }, [handleTaskLabelValue])
+
+
     return (
         <BoardComponent
+            index={1}
+            onChange={handleTaskLabelValue}
+            value={taskLabelValue}
             activeMenuIcon={activeMenuIcon}
             theme={theme as Theme}
             note={currentNote as noteType}

@@ -12,7 +12,10 @@ export const BoardComponent = ({
     note,
     theme,
     width = 0,
-    activeMenuIcon
+    activeMenuIcon,
+    onChange,
+    value,
+    index
 }: IBoardComponent) => (
     <Stack
         direction="column"
@@ -71,7 +74,7 @@ export const BoardComponent = ({
         <Stack direction="column" height="100vh" align="center" justify="center" style={{ display: note?.tasks?.length != 0 ? 'none' : 'flex', }}>
             <div style={{ width: '200px', height: 'auto' }}>
 
-                <SVG color={note?.color} value={Math.floor(Math.random() * 6)} />
+                <SVG color={note?.color} value={note?.personalNote ? 1 : 2} />
             </div>
             <Typography color={note?.color} variant="h5" weight={400} margin="2rem">
                 As tarefas de <strong>{note?.label}</strong> serão exibidas aqui
@@ -88,7 +91,7 @@ export const BoardComponent = ({
                 padding: '1.2rem 2.4rem 2.4rem 2.4rem',
                 zIndex: 2000
             }}>
-            <AddInput placeholder="Adicionar uma tarefa" color={String(primaryColor)} />
+            <AddInput disabled={!note?.personalNote} onChange={onChange} value={value} placeholder={!note?.personalNote ? `Adicione tarefas ${note?.label}` : "Adicionar uma tarefa"} color={String(primaryColor)} />
         </Stack>
 
     </Stack>

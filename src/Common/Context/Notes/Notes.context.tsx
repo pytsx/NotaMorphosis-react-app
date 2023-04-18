@@ -8,6 +8,7 @@ const values = [{
     label: 'Meu Dia',
     id: uuidv4(),
     icon: <RiSunFoggyLine />,
+    personalNote: false,
     color: '#C6A4D1', // cor de base        
     tasks: [
         {
@@ -87,6 +88,7 @@ const values = [{
     label: 'Importante',
     id: uuidv4(),
     icon: <RiStarLine />,
+    personalNote: false,
     color: '#B8A3C3', // cor complementar
     tasks: [
 
@@ -96,6 +98,7 @@ const values = [{
     label: 'Planejado',
     id: uuidv4(),
     icon: <RiCalendarTodoLine />,
+    personalNote: false,
     color: '#84A9F9', // outra variação da cor de base
     tasks: [
 
@@ -105,6 +108,7 @@ const values = [{
     label: 'Atribuído a mim',
     id: uuidv4(),
     icon: <RiUserShared2Line />,
+    personalNote: false,
     color: '#C8A8AE', // outra variação da cor complementar
     tasks: [
 
@@ -114,6 +118,7 @@ const values = [{
     label: 'Email sinalizado',
     id: uuidv4(),
     icon: <RiMailLine />,
+    personalNote: false,
     color: '#D1C4A4', // outra variação da cor de base
     tasks: [
         {
@@ -125,16 +130,15 @@ const values = [{
 },
 ];
 
+const defaultNote = {
+    label: 'Lista 1',
+    id: uuidv4(),
+    icon: <RiFileListLine />,
+    color: '#D1C4A4',
+    tasks: []
+}
 
-const values1 = [
-    {
-        label: 'Lista 1',
-        id: uuidv4(),
-        icon: <RiFileListLine />,
-        color: '#D1C4A4',
-        tasks: []
-    },
-]
+const values1: [] = []
 
 export const NotesContext = React.createContext<INotesContext>({
     notes: [],
@@ -142,11 +146,13 @@ export const NotesContext = React.createContext<INotesContext>({
     handleCurrentNote: () => { },
     handleCurrentTask: () => { },
     currentTask: undefined,
-    currentNote: undefined
+    currentNote: undefined,
+    addTask: () => { },
+    addNote: () => { }
 })
 
 export const NotesProvider = ({ children }: IChildren) => {
-    const [notes, setNotes] = React.useState<noteType[]>([])
+    const [notes, setNotes] = React.useState<noteType[] | []>([])
     const [notesDefault, setNotesDefault] = React.useState<noteType[]>([])
     const [currentNote, setCurrentNote] = React.useState<noteType | undefined>()
     const [currentTask, setCurrentTask] = React.useState<ITask | undefined>()
@@ -182,6 +188,46 @@ export const NotesProvider = ({ children }: IChildren) => {
         })
     }
 
+    const addNote = () => {
+        setNotes(prev => {
+            let lastLabel = prev.length + 1
+
+            let defaultNote = {
+                label: `Lista ${lastLabel}`,
+                id: `${lastLabel}-${uuidv4()}`,
+                icon: <RiFileListLine />,
+                color: '#D1C4A4',
+                personalNote: true,
+                tasks: []
+            }
+
+            return [...prev, defaultNote]
+        })
+    }
+
+    const updNote = () => {
+
+    }
+
+    const addTask = (label: string) => {
+        if (currentNote?.personalNote) {
+            let newNote = currentNote
+            newNote.tasks.push({
+                label,
+                id: `${label.replaceAll(' ', '-')}-${uuidv4()}`,
+                description: ''
+            })
+            setNotes(prev => prev.filter(el => el.id == newNote.id ? newNote : el))
+            setCurrentNote(newNote)
+        }
+    }
+
+    const updTask = () => {
+
+    }
+
+
+
     return (
         <NotesContext.Provider
             value={{
@@ -190,7 +236,9 @@ export const NotesProvider = ({ children }: IChildren) => {
                 currentNote,
                 notesDefault,
                 handleCurrentTask,
-                currentTask
+                currentTask,
+                addTask,
+                addNote
             }}>
             {children}
         </NotesContext.Provider>

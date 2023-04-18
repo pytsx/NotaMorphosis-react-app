@@ -5,7 +5,7 @@ import { useNotes } from "../../Common/Context"
 
 export const Tasks = () => {
 
-    const { currentNote } = useNotes()
+    const { currentNote, addTask } = useNotes()
     const [tasks, setTasks] = React.useState<ITask[]>()
 
     const handleNotes = () => {
@@ -21,7 +21,7 @@ export const Tasks = () => {
 
     React.useEffect(() => {
         handleNotes()
-    }, [currentNote?.tasks])
+    }, [currentNote?.tasks, addTask])
 
     return (
         <TasksComponent tasks={tasks as ITask[]} />

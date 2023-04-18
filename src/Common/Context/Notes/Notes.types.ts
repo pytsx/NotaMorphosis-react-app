@@ -8,6 +8,7 @@ export type noteType = {
     id: string,
     icon: any,
     color: string,
+    personalNote: boolean,
     tasks: ITask[]
 }
 export interface INotesContext {
@@ -17,4 +18,6 @@ export interface INotesContext {
     currentNote?: noteType
     currentTask?: ITask
     handleCurrentTask: (e: ITask) => void
+    addTask: (label: string) => void
+    addNote: () => void
 }

@@ -3,8 +3,10 @@ import { AvatarContainer, Typography, Search, MenuContainer, Stack } from "../..
 import { MenuLateral } from "../MenuLateral"
 import { IMenuLateral } from "../MenuLateral.types"
 import { Button } from "../../../../Components/Button"
+import { useNotes } from "../../../../Common/Context"
 
 export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
+    const { addNote } = useNotes()
     return (
         <MenuLateral width={width} isActive={isActive} >
 
@@ -55,7 +57,7 @@ export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
                     background: String(theme?.palette.secondary),
                 }} >
 
-                <Button icon={<MdAdd />} height='1.2rem' text="Nova lista" width='calc(100% - 20px)' onClick={() => { }} />
+                <Button icon={<MdAdd />} height='1.2rem' text="Nova lista" width='calc(100% - 20px)' onClick={() => addNote()} />
                 <Button
                     width="40px"
                     icon={<MdList />}

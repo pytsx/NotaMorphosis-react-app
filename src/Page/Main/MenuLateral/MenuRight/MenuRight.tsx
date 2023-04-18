@@ -26,7 +26,11 @@ export const MenuRight = ({ width, isActive, theme }: IMenuLateral) => {
             <Stack direction="column" style={{ padding: '0rem .8rem 0 .4rem' }} >
                 <MenuCard  >
                     <TaskContent task={currentTask as ITask} />
-                    <AddInput placeholder="Adicionar etapa" background='transparent' color={String(currentNote?.color)} />
+                    <AddInput
+                        placeholder="Adicionar etapa"
+                        background='transparent'
+                        color={String(currentNote?.color)}
+                    />
                 </MenuCard>
 
                 <MenuCard>
@@ -41,7 +45,13 @@ export const MenuRight = ({ width, isActive, theme }: IMenuLateral) => {
                             </Typography>
                         </Stack>
                         <span onMouseEnter={handleHoverDelete} onMouseLeave={handleHoverDelete}>
-                            <Typography color={hoverDelete ? `${theme?.palette.red}` : String(theme?.palette.typography.primary)} variant="h3" margin="0 .4rem 0 0">
+                            <Typography
+                                color={hoverDelete
+                                    ? `${theme?.palette.red}`
+                                    : String(theme?.palette.typography.primary)}
+                                variant="h3"
+                                margin="0 .4rem 0 0"
+                            >
                                 <span style={{ display: hoverDelete ? 'none' : 'flex' }}>
                                     <MdDeleteOutline />
                                 </span>
