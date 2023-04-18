@@ -2,143 +2,8 @@ import React from "react";
 import { IChildren } from "../../Types";
 import { INotesContext, ITask, noteType } from "./Notes.types";
 import { v4 as uuidv4 } from 'uuid'
-import { RiFileListLine, RiSunFoggyLine, RiCalendarTodoLine, RiUserShared2Line, RiMailLine, RiStarLine } from 'react-icons/ri';
-
-const values = [{
-    label: 'Meu Dia',
-    id: uuidv4(),
-    icon: <RiSunFoggyLine />,
-    personalNote: false,
-    color: '#C6A4D1', // cor de base        
-    tasks: [
-        {
-            id: uuidv4(),
-            label: 'teste1',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste2',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste3',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste4',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste5',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste6',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste7',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste8',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste9',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste10',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste',
-            description: 'description'
-        },
-        {
-            id: uuidv4(),
-            label: 'teste',
-            description: 'description'
-        }
-
-    ]
-},
-{
-    label: 'Importante',
-    id: uuidv4(),
-    icon: <RiStarLine />,
-    personalNote: false,
-    color: '#B8A3C3', // cor complementar
-    tasks: [
-
-    ]
-},
-{
-    label: 'Planejado',
-    id: uuidv4(),
-    icon: <RiCalendarTodoLine />,
-    personalNote: false,
-    color: '#84A9F9', // outra variação da cor de base
-    tasks: [
-
-    ]
-},
-{
-    label: 'Atribuído a mim',
-    id: uuidv4(),
-    icon: <RiUserShared2Line />,
-    personalNote: false,
-    color: '#C8A8AE', // outra variação da cor complementar
-    tasks: [
-
-    ]
-},
-{
-    label: 'Email sinalizado',
-    id: uuidv4(),
-    icon: <RiMailLine />,
-    personalNote: false,
-    color: '#D1C4A4', // outra variação da cor de base
-    tasks: [
-        {
-            id: uuidv4(),
-            label: 'teste',
-            description: 'description'
-        }
-    ]
-},
-];
-
-const defaultNote = {
-    label: 'Lista 1',
-    id: uuidv4(),
-    icon: <RiFileListLine />,
-    color: '#D1C4A4',
-    tasks: []
-}
-
-const values1: [] = []
+import { RiFileListLine } from 'react-icons/ri';
+import { generateValues } from "./appData";
 
 export const NotesContext = React.createContext<INotesContext>({
     notes: [],
@@ -159,8 +24,8 @@ export const NotesProvider = ({ children }: IChildren) => {
 
 
     React.useEffect(() => {
-        setNotesDefault(values)
-        setNotes(values1)
+        setNotesDefault(generateValues())
+        setNotes([])
     }, [])
 
     const handleCurrentNote = (e: noteType) => {

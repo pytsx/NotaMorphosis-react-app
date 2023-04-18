@@ -29,9 +29,8 @@ export const MenuItemWrapperStyled = styled.span<IMenuItemWrapperStyled>`
 
 export const MenuItemActiveIndicator = styled.span<IActive>`
     opacity: ${props => props.isActive ? '1' : '0'};
-    transition: all 50ms ease-in-out;
-    height: 45%;
-    width: .2rem;
+    height: 38%;
+    width: .24rem;
     background: #87CEFAaf;
     position: absolute;
     left: -.024rem;

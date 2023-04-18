@@ -91,7 +91,7 @@ export const BoardComponent = ({
                 padding: '1.2rem 2.4rem 2.4rem 2.4rem',
                 zIndex: 2000
             }}>
-            <AddInput disabled={!note?.personalNote} onChange={onChange} value={value} placeholder={!note?.personalNote ? `Adicione tarefas ${note?.label}` : "Adicionar uma tarefa"} color={String(primaryColor)} />
+            <AddInput disabled={!note?.personalNote} onChange={onChange} value={value} placeholder={!note?.personalNote ? `${note?.label}` : "Adicionar uma tarefa"} color={String(primaryColor)} />
         </Stack>
 
     </Stack>
