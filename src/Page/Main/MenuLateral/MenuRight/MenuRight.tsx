@@ -12,6 +12,12 @@ import React from "react"
 export const MenuRight = ({ width, isActive, theme }: IMenuLateral) => {
     const { currentTask, currentNote } = useNotes()
     const [hoverDelete, setHoverDelete] = React.useState<boolean>(false)
+    const [stepInputValue, setStepInputValue] = React.useState<string>('')
+    const handleOnChengeStepInput = (e: string) => {
+        setStepInputValue(e)
+        console.log(stepInputValue);
+
+    }
     const handleHoverDelete = () => {
         setHoverDelete(prev => !prev)
     }
@@ -27,6 +33,8 @@ export const MenuRight = ({ width, isActive, theme }: IMenuLateral) => {
                 <MenuCard  >
                     <TaskContent task={currentTask as ITask} />
                     <AddInput
+                        value={stepInputValue}
+                        onChange={handleOnChengeStepInput}
                         placeholder="Adicionar etapa"
                         background='transparent'
                         color={String(currentNote?.color)}
