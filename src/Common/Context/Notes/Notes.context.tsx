@@ -89,11 +89,7 @@ const values = [{
     icon: <RiStarLine />,
     color: '#B8A3C3', // cor complementar
     tasks: [
-        {
-            id: uuidv4(),
-            label: 'teste',
-            description: 'description'
-        }
+
     ]
 },
 {
@@ -102,11 +98,7 @@ const values = [{
     icon: <RiCalendarTodoLine />,
     color: '#84A9F9', // outra variação da cor de base
     tasks: [
-        {
-            id: uuidv4(),
-            label: 'teste',
-            description: 'description'
-        }
+
     ]
 },
 {
@@ -115,11 +107,7 @@ const values = [{
     icon: <RiUserShared2Line />,
     color: '#C8A8AE', // outra variação da cor complementar
     tasks: [
-        {
-            id: uuidv4(),
-            label: 'teste',
-            description: 'description'
-        }
+
     ]
 },
 {

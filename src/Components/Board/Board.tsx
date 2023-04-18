@@ -4,6 +4,7 @@ import { AddInput } from "../AddInput";
 import { IBoardComponent } from "./Board.type";
 import { Tasks } from "../Tasks";
 import { MdMenu } from "react-icons/md";
+import { SVG } from "../../assets";
 
 export const BoardComponent = ({
     primaryColor,
@@ -56,6 +57,7 @@ export const BoardComponent = ({
             height="fit-content"
             width="100%"
             style={{
+                display: note?.tasks?.length == 0 ? 'none' : 'flex',
                 padding: '6.4rem 2.4rem 8rem 2.4rem',
                 overflowY: 'scroll',
             }}>
@@ -63,8 +65,18 @@ export const BoardComponent = ({
                 <Tasks />
             </div>
 
-        </Stack>
 
+
+        </Stack>
+        <Stack direction="column" height="100vh" align="center" justify="center" style={{ display: note?.tasks?.length != 0 ? 'none' : 'flex', }}>
+            <div style={{ width: '200px', height: 'auto' }}>
+
+                <SVG color={note?.color} value={Math.floor(Math.random() * 6)} />
+            </div>
+            <Typography color={note?.color} variant="h5" weight={400} margin="2rem">
+                As tarefas de <strong>{note?.label}</strong> serão exibidas aqui
+            </Typography>
+        </Stack>
         <Stack
             width="100%"
             style={{
