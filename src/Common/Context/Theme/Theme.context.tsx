@@ -3,6 +3,7 @@ import { IChildren } from "../../Types";
 import { IThemeContext, Theme } from "./Theme.types";
 import createTheme from "./createTheme";
 import { NeutralColors } from '@fluentui/theme';
+import * as Fui from '@fluentui/theme';
 
 
 export const ThemeContext = React.createContext<IThemeContext>({
@@ -21,6 +22,8 @@ export const ThemeProvider = ({ children }: IChildren) => {
         width: window.innerWidth,
         height: window.innerHeight
     })
+    const themeFUI = Fui.createTheme()
+
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -39,11 +42,12 @@ export const ThemeProvider = ({ children }: IChildren) => {
         setTheme(createTheme({
             palette: {
                 mode: mode,
-                primary: mode == 'dark' ? NeutralColors.gray200 : NeutralColors.gray20,
-                secondary: mode == 'dark' ? NeutralColors.gray180 : NeutralColors.gray10,
+                primary: mode == 'dark' ? themeFUI.palette.neutralPrimary : themeFUI.palette.neutralLight,
+                secondary: mode == 'dark' ? themeFUI.palette.neutralPrimaryAlt : themeFUI.palette.neutralLighterAlt,
+                red: mode == 'dark' ? themeFUI.palette.red : themeFUI.palette.redDark,
                 typography: {
-                    primary: mode == 'dark' ? NeutralColors.gray20 : NeutralColors.gray200,
-                    secondary: mode == 'dark' ? NeutralColors.gray10 : NeutralColors.gray190,
+                    primary: mode == 'dark' ? themeFUI.palette.neutralLight : themeFUI.palette.neutralSecondary,
+                    secondary: mode == 'dark' ? themeFUI.palette.neutralLighterAlt : themeFUI.palette.neutralSecondaryAlt,
                 }
             },
             shape: {

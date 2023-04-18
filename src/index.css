@@ -13,21 +13,21 @@
 /* Estilo para o scrollbar da página */
 ::-webkit-scrollbar {
   /* Largura da barra */
-  width: .32rem;
+  width: 0rem;
 }
 
 
 /* Estilo para o thumb (barra de arrastar) */
 ::-webkit-scrollbar-thumb {
-  background-color: var(--gray200af);
+  background-color: transparent;
   /* Cor de fundo */
-  border-radius: 10px;
+  border-radius: 1px;
   cursor: pointer;
   /* Arredondamento das bordas */
 }
 
 /* Estilo para o thumb quando estiver em hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--gray200);
+  background-color: transparent;
   /* Cor de fundo em hover */
 }

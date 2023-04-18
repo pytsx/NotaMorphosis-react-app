@@ -26,7 +26,7 @@ export const BoardComponent = ({
             style={{
                 display: note ? 'flex' : 'none',
                 flexDirection: 'column',
-                background: '#1d1d1d9f',
+                background: `${theme?.palette?.primary}0f`,
                 backdropFilter: 'blur(12px)',
                 padding: '2.4rem 2.4rem 1.2rem 2.4rem',
                 zIndex: 2000
@@ -71,7 +71,7 @@ export const BoardComponent = ({
                 position: 'absolute',
                 bottom: 0,
                 visibility: note ? 'visible' : 'hidden',
-                background: '#1d1d1d9f',
+                background: `${theme?.palette?.primary}0f`,
                 backdropFilter: 'blur(12px)',
                 padding: '1.2rem 2.4rem 2.4rem 2.4rem',
                 zIndex: 2000

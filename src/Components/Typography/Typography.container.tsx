@@ -8,13 +8,15 @@ export const Typography = ({
     p = 14,
     weight = 600,
     family,
-    color = '#c9c9c9',
+    color,
     lineHeight = `${p * 0.06}`,
     letterSpace = `-.020rem`,
     display = `inline`,
     text,
     sx,
-    wrap = 'nowrap'
+    wrap = 'nowrap',
+    margin,
+    padding
 }: ITypography) => {
     const { theme } = useTheme()
     const sizes: { [key: string]: number } = {
@@ -50,6 +52,8 @@ export const Typography = ({
             sx={sx}
             wrap={wrap}
             display={display}
+            margin={margin}
+            padding={padding}
         >
             {children ? children : text}
         </Component>

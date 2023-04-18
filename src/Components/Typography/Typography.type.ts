@@ -14,6 +14,8 @@ export interface ITypography {
     sx?: {}
     display?: string
     wrap?: string
+    margin?: string,
+    padding?: string
 }
 export interface ITypographyStyled extends ITypography {
 
