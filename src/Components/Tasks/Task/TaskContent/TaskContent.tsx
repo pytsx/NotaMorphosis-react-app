@@ -1,10 +1,10 @@
 import { FaCheck } from "react-icons/fa";
 import { MdStarBorder } from "react-icons/md";
 import { RiCheckboxBlankCircleLine } from "react-icons/ri";
-import { Typography } from "../../../../Typography";
 import { ITaskContent } from "./TaskContent.type";
 import React from "react";
-import { Stack } from "../../../../Stack";
+import { Typography } from "../../../Typography";
+import { Stack } from "../../../Stack";
 
 export const TaskContent = ({ task }: ITaskContent) => {
 
@@ -13,7 +13,7 @@ export const TaskContent = ({ task }: ITaskContent) => {
         setHover(prev => !prev)
     }
     return (
-        <Stack width="100%">
+        <Stack style={{ padding: '0 .8rem' }} width="100%">
             <div
                 onMouseLeave={handleHover}
                 onMouseEnter={handleHover}
@@ -41,7 +41,8 @@ export const TaskContent = ({ task }: ITaskContent) => {
                     width: '100%',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    padding: '0 .4rem'
                 }}>
                 <Typography variant="h4" weight={400}>
                     {task?.label}

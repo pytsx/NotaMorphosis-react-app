@@ -1,4 +1,4 @@
-import { ITask } from "../../../../Common/Context/Notes/Notes.types";
+import { ITask } from "../../../Common/Context/Notes/Notes.types"
 
 export interface ITaskContainer {
     task: ITask

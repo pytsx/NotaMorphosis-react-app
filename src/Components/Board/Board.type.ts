@@ -8,4 +8,5 @@ export interface IBoardComponent {
     theme: Theme
     width?: number
     currentTask?: ITask
+    activeMenuIcon: boolean
 }

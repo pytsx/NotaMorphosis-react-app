@@ -1,7 +1,7 @@
 import React from "react"
-import { useNotes } from "../../../Common/Context"
 import { TasksComponent } from "./Tasks"
-import { ITask } from "../../../Common/Context/Notes/Notes.types"
+import { ITask } from "../../Common/Context/Notes/Notes.types"
+import { useNotes } from "../../Common/Context"
 
 export const Tasks = () => {
 

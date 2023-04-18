@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { IActive } from "../../../Menu/MenuItem/MenuItem.type";
+import { IActive } from "../../Menu/MenuItem/MenuItem.type";
 
 export const NoteContainerStyled = styled.li<IActive>`
     width: 100%;

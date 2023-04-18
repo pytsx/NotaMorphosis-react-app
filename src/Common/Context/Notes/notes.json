@@ -1,0 +1,26 @@
+[
+    {
+        "id": "unique_id",
+        "title": "Note Title",
+        "text": "Note Text",
+        "dueDateTime": "2023-04-30T14:30:00Z",
+        "completedDateTime": "2023-04-16T12:45:00Z",
+        "reminders": [
+            {
+                "id": "unique_reminder_id",
+                "dateTime": "2023-04-28T10:00:00Z",
+                "isOn": true
+            },
+            {
+                "id": "unique_reminder_id_2",
+                "dateTime": "2023-04-29T16:30:00Z",
+                "isOn": true
+            }
+        ],
+        "isReminderOn": true,
+        "isCompleted": true,
+        "createdDateTime": "2023-04-15T15:20:00Z",
+        "lastModifiedDateTime": "2023-04-16T13:10:00Z",
+        "etag": "etag_value"
+    }
+]

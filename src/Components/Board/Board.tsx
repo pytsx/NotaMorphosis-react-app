@@ -1,15 +1,17 @@
 import { Stack } from "../Stack";
 import { Typography } from "../Typography";
-import { AddInput } from "./AddInput";
+import { AddInput } from "../AddInput";
 import { IBoardComponent } from "./Board.type";
-import { Tasks } from "./Notes";
+import { Tasks } from "../Tasks";
+import { MdMenu } from "react-icons/md";
 
 export const BoardComponent = ({
     primaryColor,
     secondaryColor,
     note,
     theme,
-    width = 0
+    width = 0,
+    activeMenuIcon
 }: IBoardComponent) => (
     <Stack
         direction="column"
@@ -18,25 +20,34 @@ export const BoardComponent = ({
         height="100%"
         style={{
             background: String(theme?.palette?.primary),
-            margin: '.4rem .4rem .4rem .2rem',
         }}>
-
         <Stack
             position='absolute'
             style={{
                 display: note ? 'flex' : 'none',
-                gap: '.6rem',
+                flexDirection: 'column',
                 background: '#1d1d1d9f',
                 backdropFilter: 'blur(12px)',
                 padding: '2.4rem 2.4rem 1.2rem 2.4rem',
                 zIndex: 2000
             }}>
-            <Typography color={secondaryColor} variant="h1">
-                {note?.icon}
-            </Typography>
-            <Typography color={secondaryColor} variant="h1">
-                {note?.label}
-            </Typography>
+            <div style={{ margin: '-1.2rem 0 .32rem .8rem', display: activeMenuIcon ? 'inline' : 'none' }}>
+                <Typography color={secondaryColor} variant="h1" >
+                    <MdMenu />
+                </Typography>
+            </div>
+            <Stack>
+                <div style={{ marginLeft: '.8rem' }}>
+                    <Typography color={secondaryColor} variant="h1">
+                        {note?.icon}
+                    </Typography>
+                </div>
+                <div style={{ marginLeft: '.4rem' }}>
+                    <Typography color={secondaryColor} variant="h1">
+                        {note?.label}
+                    </Typography>
+                </div>
+            </Stack>
         </Stack>
 
 
@@ -64,9 +75,8 @@ export const BoardComponent = ({
                 backdropFilter: 'blur(12px)',
                 padding: '1.2rem 2.4rem 2.4rem 2.4rem',
                 zIndex: 2000
-
             }}>
-            <AddInput color={String(primaryColor)} />
+            <AddInput placeholder="Adicionar uma tarefa" color={String(primaryColor)} />
         </Stack>
 
     </Stack>

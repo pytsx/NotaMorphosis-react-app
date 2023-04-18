@@ -1,33 +1,41 @@
 import React from "react"
-import { Stack } from "../../Stack"
-import { Typography } from "../../Typography"
+import { Stack } from "../Stack"
+import { Typography } from "../Typography"
 import { AddInputStyled } from "./AddInput.styled"
 import { RiCheckboxBlankCircleLine } from "react-icons/ri"
 import { MdAdd } from 'react-icons/md'
-import { useTheme } from "../../../Common/Context/Theme"
+import { useTheme } from "../../Common/Context/Theme"
 
 export interface IAddInput {
     color: string
+    background?: string
+    placeholder?: string
 }
 
 
-export const AddInput = ({ color }: IAddInput) => {
+export const AddInput = ({ color, background, placeholder }: IAddInput) => {
     const { theme } = useTheme()
     const borderRadius = `${theme?.shape.borderRadius}rem`;
     const [focus, setFocus] = React.useState<boolean>(false)
     const [hover, setHover] = React.useState<boolean>(false)
     let primaryColor = '#c9c9c9' + '16'
     let secondaryColor = '#c9c9c9' + '0a'
+    const handleHover = () => {
+        if (!!!background) {
+            setHover(prev => !prev)
+        } else {
+        }
+    }
     return (
         <Stack
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
             width="100%"
             position="relative"
             align="center"
             justify="center"
             style={{
-                background: hover || focus ? primaryColor : secondaryColor,
+                background: hover || focus && !!!background ? primaryColor : !!background ? background : secondaryColor,
                 borderRadius: borderRadius,
                 padding: '0 .8rem',
                 transition: 'all 100ms ease-in-out'
@@ -46,6 +54,8 @@ export const AddInput = ({ color }: IAddInput) => {
                 </Typography>
             </Stack>
             <AddInputStyled
+                color={color}
+                placeholder={focus ? '' : placeholder}
                 style={{
                     borderRadius: borderRadius
                 }}
@@ -54,18 +64,7 @@ export const AddInput = ({ color }: IAddInput) => {
             >
 
             </AddInputStyled>
-            <Stack
-                align="center"
-                position="absolute"
-                width="fit-content"
-                style={{
-                    left: '3rem',
-                    display: !focus ? 'inline' : 'none',
-                }}>
-                <Typography color={color} variant="h5" weight={400} >
-                    Adicionar uma tarefa
-                </Typography>
-            </Stack>
+
         </Stack>
     )
 }

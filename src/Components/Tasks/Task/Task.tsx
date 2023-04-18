@@ -1,8 +1,7 @@
-import { MdStarBorder } from "react-icons/md";
-import { Typography } from "../../../Typography";
 import { NoteContainerStyled, NoteWrapperStyled } from "./Task.styled"
 import { ITaskComponent } from "./Task.type"
 import { TaskContent } from "./TaskContent";
+import { Typography } from "../../Typography";
 
 export const TaskComponent = ({
     task,
@@ -24,7 +23,7 @@ export const TaskComponent = ({
                 justifyContent: 'center',
                 display: !!task?.id ? 'flex' : 'none',
                 flexDirection: 'column',
-                padding: '.64rem .8rem',
+                padding: '.8rem 0rem',
             }}>
             <TaskContent task={task} />
             <div style={{
@@ -32,7 +31,7 @@ export const TaskComponent = ({
                 padding: '.16rem 0 0 1.74rem'
             }}>
                 <Typography variant="h6">
-                    {task?.description}
+                    {/* parte inferior task */}
                 </Typography>
             </div>
         </NoteWrapperStyled>
