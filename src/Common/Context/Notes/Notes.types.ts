@@ -15,4 +15,6 @@ export interface INotesContext {
     notes: noteType[] | []
     handleCurrentNote: (e: noteType) => void
     currentNote?: noteType
+    currentTask?: ITask
+    handleCurrentTask: (e: ITask) => void
 }

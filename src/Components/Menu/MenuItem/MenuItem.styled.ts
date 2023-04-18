@@ -6,7 +6,6 @@ export const MenuItemStyled = styled.li<IActive>`
     margin-top: .2rem;
     list-style: none;
     width: 100%;
-    cursor: ${props => props.isActive ? 'default' : 'pointer'};
     user-select:none;
     display: flex;
     flex-direction: row;

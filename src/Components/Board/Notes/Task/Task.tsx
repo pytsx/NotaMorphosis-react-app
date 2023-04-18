@@ -1,70 +1,39 @@
-import { Typography } from "../../../Typography"
-import { NoteContainerStyled, NoteWrapperStyled } from "./Note.styled"
+import { MdStarBorder } from "react-icons/md";
+import { Typography } from "../../../Typography";
+import { NoteContainerStyled, NoteWrapperStyled } from "./Task.styled"
 import { ITaskComponent } from "./Task.type"
-import { RiCheckboxBlankCircleLine } from "react-icons/ri"
-import { FaCheck } from 'react-icons/fa';
-import { MdStarBorder } from "react-icons/md"
+import { TaskContent } from "./TaskContent";
 
 export const TaskComponent = ({
     task,
     hover,
     handleHover,
-    borderRadius
+    borderRadius,
+    handleCurrentTask,
+    currentTask
 }: ITaskComponent) => (
     <NoteContainerStyled
-        isActive={false || !!task.label}
+        isActive={false || !!task?.label}
+        onClick={() => !!task?.label ? handleCurrentTask(task) : {}}
     >
         <NoteWrapperStyled
-            isActive={!!task.label}
-            style={{ borderRadius, alignItems: 'center', display: !!task.id ? 'flex' : 'none' }}
-        >
-            <div
-                onMouseLeave={handleHover}
-                onMouseEnter={handleHover}
-                style={{
-                    position: 'relative',
-                    display: 'flex',
-                    padding: '0rem .8rem',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}>
-                <Typography variant="h2" >
-                    <RiCheckboxBlankCircleLine />
-                </Typography>
-                <div
-                    style={{
-                        position: 'absolute',
-                        display: hover ? 'flex' : 'none'
-                    }} >
-                    <Typography variant="captcha">
-                        <FaCheck />
-                    </Typography>
-                </div>
-            </div>
+            isActive={task?.id == currentTask?.id}
+            style={{
+                borderRadius,
+                alignItems: 'center',
+                justifyContent: 'center',
+                display: !!task?.id ? 'flex' : 'none',
+                flexDirection: 'column',
+                padding: '.64rem .8rem',
+            }}>
+            <TaskContent task={task} />
             <div style={{
                 width: '100%',
-                padding: '.64rem .64rem .64rem 0'
+                padding: '.16rem 0 0 1.74rem'
             }}>
-                <span
-                    style={{
-                        width: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between'
-                    }}>
-                    <Typography variant="h4" weight={400}>
-                        {task.label}
-                    </Typography>
-
-                    <Typography variant="h2">
-                        <MdStarBorder />
-                    </Typography>
-                </span>
-                <span>
-                    <Typography variant="h6">
-                        {task?.description}
-                    </Typography>
-                </span>
+                <Typography variant="h6">
+                    {task?.description}
+                </Typography>
             </div>
         </NoteWrapperStyled>
     </NoteContainerStyled >

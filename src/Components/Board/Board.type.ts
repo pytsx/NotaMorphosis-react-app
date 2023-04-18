@@ -1,4 +1,4 @@
-import { noteType } from "../../Common/Context/Notes/Notes.types";
+import { ITask, noteType } from "../../Common/Context/Notes/Notes.types";
 import { Theme } from "../../Common/Context/Theme/Theme.types";
 
 export interface IBoardComponent {
@@ -7,4 +7,5 @@ export interface IBoardComponent {
     secondaryColor: string
     theme: Theme
     width?: number
+    currentTask?: ITask
 }

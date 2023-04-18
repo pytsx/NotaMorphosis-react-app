@@ -1,10 +1,8 @@
 import React from "react";
 import { IChildren } from "../../Types";
-import { INotesContext, noteType } from "./Notes.types";
+import { INotesContext, ITask, noteType } from "./Notes.types";
 import { v4 as uuidv4 } from 'uuid'
 import { RiFileListLine, RiSunFoggyLine, RiCalendarTodoLine, RiUserShared2Line, RiMailLine, RiStarLine } from 'react-icons/ri';
-
-
 
 const values = [{
     label: 'Meu Dia',
@@ -140,31 +138,31 @@ const values = [{
 ];
 
 
+const values1 = [
+    {
+        label: 'Lista 1',
+        id: uuidv4(),
+        icon: <RiFileListLine />,
+        color: '#D1C4A4',
+        tasks: []
+    },
+]
 
 export const NotesContext = React.createContext<INotesContext>({
     notes: [],
     notesDefault: [],
     handleCurrentNote: () => { },
+    handleCurrentTask: () => { },
+    currentTask: undefined,
     currentNote: undefined
 })
-
-
-
 
 export const NotesProvider = ({ children }: IChildren) => {
     const [notes, setNotes] = React.useState<noteType[]>([])
     const [notesDefault, setNotesDefault] = React.useState<noteType[]>([])
     const [currentNote, setCurrentNote] = React.useState<noteType | undefined>()
+    const [currentTask, setCurrentTask] = React.useState<ITask | undefined>()
 
-    const values1 = [
-        {
-            label: 'Lista 1',
-            id: uuidv4(),
-            icon: <RiFileListLine />,
-            color: '#D1C4A4',
-            tasks: []
-        },
-    ]
 
     React.useEffect(() => {
         setNotesDefault(values)
@@ -175,9 +173,27 @@ export const NotesProvider = ({ children }: IChildren) => {
         setCurrentNote(e)
     }
 
+    const handleCurrentTask = (e: ITask) => {
+        setCurrentTask(prev => {
+            if (prev) {
+                if (prev?.id == e.id) {
+                    return undefined
+                }
+            }
+            return e
+        })
+    }
 
     return (
-        <NotesContext.Provider value={{ notes, handleCurrentNote, currentNote, notesDefault }}>
+        <NotesContext.Provider
+            value={{
+                notes,
+                handleCurrentNote,
+                currentNote,
+                notesDefault,
+                handleCurrentTask,
+                currentTask
+            }}>
             {children}
         </NotesContext.Provider>
     )

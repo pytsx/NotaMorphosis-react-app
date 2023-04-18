@@ -14,14 +14,13 @@ export const NoteWrapperStyled = styled.div<IActive>`
     width: 100%;
     height: 100%;
     
-    background: ${props => props.isActive ? '#c9c9c916' : 'transparent'};
-    cursor: pointer;
+    background: ${props => props.isActive ? '#c9c9c932' : '#c9c9c916'};
     padding: .32rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     
     &:hover{
-        background: ${props => props.isActive ? '#c9c9c932' : 'transparent'};
+        background: #c9c9c932;
     }
 `
