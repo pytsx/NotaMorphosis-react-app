@@ -11,7 +11,7 @@ export const Menu = ({ values }: IMenu) => {
         <Stack height="100%" width="100%">
             <MenuContainerStyled style={{ height: "100%", width: '100%' }}>
                 {
-                    values.map(item => (
+                    values?.map(item => (
                         <MenuItem key={item.id} id={item.id} value={item} />
                     ))
                 }

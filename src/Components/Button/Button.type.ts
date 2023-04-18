@@ -12,6 +12,7 @@ export interface IButtonStyled extends IActive {
     height?: string
     justify?: string
     theme?: Theme
+    center?: boolean
 }
 
 export interface IButton extends IButtonStyled, ITypography {

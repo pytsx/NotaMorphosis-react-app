@@ -17,7 +17,9 @@ export const Button = ({
     variant = 'h5',
     height,
     justify,
-    icon
+    icon,
+    center = false,
+    color
 }: IButton) => {
     const { theme } = useTheme()
     return (
@@ -46,8 +48,8 @@ export const Button = ({
                         {icon}
                     </Typography>
                 </div>
-                <div style={{ width: '100%', padding: '.4rem', display: text ? 'flex' : 'none', alignItems: 'center', justifyContent: 'start' }}>
-                    <Typography variant={variant}>
+                <div style={{ width: '100%', padding: '.4rem', display: text ? 'flex' : 'none', alignItems: 'center', justifyContent: center ? 'center' : 'start' }}>
+                    <Typography color={color ? color : undefined} variant={variant}>
                         {text}
                     </Typography>
                 </div>

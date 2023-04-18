@@ -3,10 +3,12 @@ import { AvatarContainer, Typography, Search, MenuContainer, Stack } from "../..
 import { MenuLateral } from "../MenuLateral"
 import { IMenuLateral } from "../MenuLateral.types"
 import { Button } from "../../../../Components/Button"
-import { useNotes } from "../../../../Common/Context"
+import { useNotes, usePerfil } from "../../../../Common/Context"
 
 export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
     const { addNote } = useNotes()
+    const { perfil } = usePerfil()
+    let letter = perfil?.username[0] as String
     return (
         <MenuLateral width={width} isActive={isActive} >
 
@@ -15,13 +17,13 @@ export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
                 <Stack height="90px" direction="column" gap=".8rem" padding='0 .64rem '>
 
                     <Stack gap=".6rem" >
-                        <AvatarContainer />
+                        <AvatarContainer letter={letter.toUpperCase()} />
                         <Stack height="100%" justify="center" direction="column">
                             <Typography variant="h5" weight={400} letterSpace={'-.040rem'}>
-                                Lorem ipsum dolor sit
+                                {perfil?.username}
                             </Typography>
                             <Typography variant="h6" weight={400}  >
-                                dolor@ipsum.sit
+                                {perfil?.email}
                             </Typography>
                         </Stack>
                     </Stack>

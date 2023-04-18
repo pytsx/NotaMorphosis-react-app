@@ -4,6 +4,7 @@ import { INotesContext, ITask, noteType } from "./Notes.types";
 import { v4 as uuidv4 } from 'uuid'
 import { RiFileListLine } from 'react-icons/ri';
 import { generateValues } from "./appData";
+import { usePerfil } from "../Perfil";
 
 export const NotesContext = React.createContext<INotesContext>({
     notes: [],
@@ -21,7 +22,7 @@ export const NotesProvider = ({ children }: IChildren) => {
     const [notesDefault, setNotesDefault] = React.useState<noteType[]>([])
     const [currentNote, setCurrentNote] = React.useState<noteType | undefined>()
     const [currentTask, setCurrentTask] = React.useState<ITask | undefined>()
-
+    const { perfil } = usePerfil()
 
     React.useEffect(() => {
         setNotesDefault(generateValues())
