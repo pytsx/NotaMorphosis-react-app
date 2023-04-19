@@ -79,12 +79,12 @@ export const NotesProvider = ({ children }: IChildren) => {
     const removeNote = () => {
         setCurrentNoteIndex(notes.findIndex(el => el.id === currentNote?.id))
         setNotes(prev => prev.filter(el => el.id != currentNote?.id))
+        setCurrentNote(notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] || notesDefault[notesDefault.length - 1])
     }
 
     React.useEffect(() => {
-        setCurrentNote(notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] || notesDefault[notesDefault.length - 1])
-    }, [notes])
-
+        setCurrentNote(currentNoteIndex > 0 ? notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] : notesDefault[notesDefault.length - 1])
+    }, [currentNoteIndex])
 
     const addTask = (label: string) => {
         if (currentNote?.personalNote) {
