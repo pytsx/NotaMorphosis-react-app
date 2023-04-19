@@ -1,41 +1,29 @@
-import { FaCheck } from "react-icons/fa";
 import { MdStarBorder } from "react-icons/md";
-import { RiCheckboxBlankCircleLine } from "react-icons/ri";
 import { ITaskContent } from "./TaskContent.type";
-import React from "react";
 import { Typography } from "../../../Typography";
 import { Stack } from "../../../Stack";
+import { CheckIcon } from "../../..";
+import { useNotes } from "../../../../Common/Context";
+import React from "react";
 
 export const TaskContent = ({ task }: ITaskContent) => {
+    const { removeTask, currentTask, completeTask } = useNotes()
+    const [isActive, setIsActive] = React.useState<boolean>(currentTask?.id == task?.id && task?.isComplete)
+    const [display, setDisplay] = React.useState<boolean>(false)
 
-    const [hover, setHover] = React.useState<boolean>(false)
-    const handleHover = () => {
-        setHover(prev => !prev)
+    const handleActive = () => {
+        completeTask(task.id)
+        setIsActive(prev => !prev)
     }
+
+    React.useEffect(() => {
+        setIsActive(task?.isComplete)
+    }, [task?.isComplete, currentTask])
     return (
         <Stack style={{ padding: '0 .8rem' }} width="100%">
-            <div
-                onMouseLeave={handleHover}
-                onMouseEnter={handleHover}
-                style={{
-                    position: 'relative',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}>
-                <Typography variant="h2" >
-                    <RiCheckboxBlankCircleLine />
-                </Typography>
-                <div
-                    style={{
-                        position: 'absolute',
-                        display: hover ? 'flex' : 'none'
-                    }} >
-                    <Typography variant="captcha">
-                        <FaCheck />
-                    </Typography>
-                </div>
-            </div>
+            <span onClick={() => removeTask(task?.id)}>
+                <CheckIcon handleActive={handleActive} active={isActive} />
+            </span>
             <span
                 style={{
                     width: '100%',

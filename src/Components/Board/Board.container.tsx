@@ -33,9 +33,7 @@ export const Board = ({ width }: { width?: number }) => {
         const handleKeyPress = (e: KeyboardEvent) => {
             if (e.code == 'Enter') {
                 addTask(taskLabelValue)
-                setTimeout(() => {
-                    setTaskLabelValue('')
-                }, 200)
+                setTaskLabelValue('')
             }
 
         }

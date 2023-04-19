@@ -6,7 +6,7 @@ import { MenuItemActiveIndicator, MenuItemStyled, MenuItemWrapperStyled } from "
 import { IMenuItem } from "./MenuItem.type"
 import { ActionButtons } from "./ActionButtons"
 
-export const MenuItemComponent = ({ isActive, value, contextMenuActive, handleClick, onContextMenu }: IMenuItem) => {
+export const MenuItemComponent = ({ isActive, value, handleClick, onContextMenu }: IMenuItem) => {
     const { theme } = useTheme()
     return (
         <MenuItemStyled onContextMenu={onContextMenu} onClick={() => handleClick(value)} isActive={isActive}>

@@ -4,7 +4,6 @@ import { INotesContext, ITask, noteType } from "./Notes.types";
 import { v4 as uuidv4 } from 'uuid'
 import { RiFileListLine } from 'react-icons/ri';
 import { generateValues } from "./appData";
-import { usePerfil } from "../Perfil";
 
 export const NotesContext = React.createContext<INotesContext>({
     notes: [],
@@ -15,7 +14,10 @@ export const NotesContext = React.createContext<INotesContext>({
     currentNote: undefined,
     addTask: () => { },
     addNote: () => { },
-    removeNote: () => { }
+    removeNote: () => { },
+    removeTask: () => { },
+    completeTask: () => { }
+
 })
 
 export const NotesProvider = ({ children }: IChildren) => {
@@ -82,9 +84,7 @@ export const NotesProvider = ({ children }: IChildren) => {
         setCurrentNote(notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] || notesDefault[notesDefault.length - 1])
     }
 
-    React.useEffect(() => {
-        setCurrentNote(currentNoteIndex > 0 ? notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] : notesDefault[notesDefault.length - 1])
-    }, [currentNoteIndex])
+
 
     const addTask = (label: string) => {
         if (currentNote?.personalNote && label?.trim()?.length != 0) {
@@ -92,13 +92,50 @@ export const NotesProvider = ({ children }: IChildren) => {
             newNote.tasks.push({
                 label,
                 id: `${label?.replaceAll(' ', '-')}-${uuidv4()}`,
-                description: ''
+                description: '',
+                isComplete: false,
+                role: {
+                    categories: notesDefault.map(note => ({
+                        id: note.id,
+                        label: note.label,
+                        icon: note.icon,
+                        isInclude: false
+                    }))
+                },
+                steps: []
             })
             setNotes(prev => prev.filter(el => el.id == newNote.id ? newNote : el))
             setCurrentNote(newNote)
         }
     }
 
+    const completeTask = (id: string) => {
+        const updatedTasks = currentNote?.tasks.map(task => {
+            if (task.id === id) {
+                return {
+                    ...task,
+                    isComplete: !task.isComplete
+                }
+            } else {
+                return task
+            }
+        })
+        if (updatedTasks) {
+            const updatedNote = {
+                ...currentNote,
+                tasks: updatedTasks
+            }
+            setNotes(prev => prev.map(note => note?.id === updatedNote?.id ? updatedNote : note) as noteType[])
+            setCurrentNote(updatedNote as noteType)
+        }
+    }
+    React.useEffect(() => {
+        setCurrentNote(currentNoteIndex > 0 ? notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] : notesDefault[notesDefault.length - 1])
+    }, [currentNoteIndex])
+    const removeTask = (id: string) => {
+        console.log(id);
+
+    }
     const updTask = () => {
 
     }
@@ -116,7 +153,9 @@ export const NotesProvider = ({ children }: IChildren) => {
                 currentTask,
                 addTask,
                 addNote,
-                removeNote
+                removeNote,
+                removeTask,
+                completeTask
             }}>
             {children}
         </NotesContext.Provider>

@@ -52,7 +52,7 @@ export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
                 position="absolute"
                 width="100%"
                 height="3rem"
-                padding='.32rem .32rem 0 .32rem'
+                padding='.32rem '
                 gap='0'
                 style={{
                     bottom: 1,
