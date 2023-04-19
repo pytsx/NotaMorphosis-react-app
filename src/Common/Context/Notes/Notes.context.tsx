@@ -87,7 +87,7 @@ export const NotesProvider = ({ children }: IChildren) => {
     }, [currentNoteIndex])
 
     const addTask = (label: string) => {
-        if (currentNote?.personalNote) {
+        if (currentNote?.personalNote && label.trim().length != 0) {
             let newNote = currentNote
             newNote.tasks.push({
                 label,

@@ -15,11 +15,14 @@ export const PerfilProvider = ({ children }: IChildren) => {
     const [perfil, setPerfil] = React.useState<IPerfil>()
 
     const createPerfil = (username: string, email: string) => {
-        let newPerfil = {
-            username,
-            email,
+        if (username.trim.length != 0 && email.trim.length) {
+
+            let newPerfil = {
+                username,
+                email,
+            }
+            setPerfil(newPerfil)
         }
-        setPerfil(newPerfil)
     }
     React.useEffect(() => {
         // createPerfil('henrique', 'exemple@pessoa.com')
