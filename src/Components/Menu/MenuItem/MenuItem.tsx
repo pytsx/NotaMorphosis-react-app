@@ -1,4 +1,3 @@
-import { MdDeleteOutline, MdEdit } from "react-icons/md"
 import { useTheme } from "../../../Common/Context/Theme"
 import { Theme } from "../../../Common/Context/Theme/Theme.types"
 import { Stack } from "../../Stack"
@@ -34,9 +33,8 @@ export const MenuItemComponent = ({ isActive, value, contextMenuActive, handleCl
                         height: 'fit-content',
                         padding: '.32rem ',
                         borderRadius: '50rem',
-                        display: value?.tasks.length >= 1 ? 'flex' : 'none',
+                        opacity: value?.tasks.length >= 1 && !isActive ? 1 : 0,
                         boxShadow: `0px 1px 4px -1px ${String(theme?.palette?.secondary)}`
-
                     }}>
                         <Typography variant="h6" weight={400} >
                             {value?.tasks.length}

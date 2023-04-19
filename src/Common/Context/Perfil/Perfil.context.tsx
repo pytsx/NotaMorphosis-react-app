@@ -1,7 +1,6 @@
 import React from "react";
 import { IChildren } from "../../Types";
 import { IPerfil, IPerfilContext } from "./Perfil.types";
-import { generateValues } from "../Notes/appData";
 
 export const PerfilContext = React.createContext<IPerfilContext>({
     perfil: {
@@ -15,11 +14,11 @@ export const PerfilProvider = ({ children }: IChildren) => {
     const [perfil, setPerfil] = React.useState<IPerfil>()
 
     const createPerfil = (username: string, email: string) => {
-        if (username.trim.length != 0 && email.trim.length) {
+        if (username?.trim()?.length != 0 && email?.trim()?.length != 0) {
 
             let newPerfil = {
-                username,
-                email,
+                username: username.trim(),
+                email: email.trim(),
             }
             setPerfil(newPerfil)
         }

@@ -17,7 +17,7 @@ export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
                 <Stack height="90px" direction="column" gap=".8rem" padding='0 .64rem '>
 
                     <Stack gap=".6rem" >
-                        <AvatarContainer letter={letter.toUpperCase()} />
+                        <AvatarContainer letter={letter?.toUpperCase()} />
                         <Stack height="100%" justify="center" direction="column">
                             <Typography variant="h5" weight={400} letterSpace={'-.040rem'}>
                                 {perfil?.username}

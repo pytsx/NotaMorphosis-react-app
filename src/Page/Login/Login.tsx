@@ -6,7 +6,7 @@ import { Button } from "../../Components/Button"
 
 export const LoginPage = () => {
     const { theme } = useTheme()
-    const { createPerfil } = usePerfil()
+    const { createPerfil, perfil } = usePerfil()
     const [username, setUsername] = React.useState<string | undefined>(undefined)
     const [email, setEmail] = React.useState<string | undefined>(undefined)
     const [errorMessage, setErrorMessage] = React.useState<string>(' ')
@@ -46,7 +46,18 @@ export const LoginPage = () => {
         }
     })
     return (
-        <Stack align="center" justify="center" width="100%" height="100%" style={{}}>
+        <Stack
+            position="absolute"
+            align="center"
+            justify="center"
+            width="100%"
+            height="100%"
+            style={{
+                zIndex: 100000,
+                display: !!!perfil ? 'flex' : 'none',
+                backdropFilter: 'blur(10px) grayscale(100%)',
+                transition: 'all 1s ease'
+            }}>
             <Stack
                 align="center"
                 justify="space-evenly"
@@ -55,7 +66,7 @@ export const LoginPage = () => {
                 height="30rem"
                 style={{
                     padding: '.8rem',
-                    background: `${theme?.palette?.primary}`,
+                    background: `${theme?.palette?.secondary}`,
                     borderRadius: `${theme?.shape.borderRadius}rem`,
 
                 }}>

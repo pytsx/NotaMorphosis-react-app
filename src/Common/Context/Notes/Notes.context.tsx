@@ -87,11 +87,11 @@ export const NotesProvider = ({ children }: IChildren) => {
     }, [currentNoteIndex])
 
     const addTask = (label: string) => {
-        if (currentNote?.personalNote && label.trim().length != 0) {
+        if (currentNote?.personalNote && label?.trim()?.length != 0) {
             let newNote = currentNote
             newNote.tasks.push({
                 label,
-                id: `${label.replaceAll(' ', '-')}-${uuidv4()}`,
+                id: `${label?.replaceAll(' ', '-')}-${uuidv4()}`,
                 description: ''
             })
             setNotes(prev => prev.filter(el => el.id == newNote.id ? newNote : el))

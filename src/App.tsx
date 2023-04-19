@@ -8,11 +8,8 @@ function App() {
   const { perfil } = usePerfil()
   return (
     <Layout>
-      {
-        !perfil
-          ? <LoginPage />
-          : <MainPage />
-      }
+      <LoginPage />
+      <MainPage />
     </Layout>
   )
 }
