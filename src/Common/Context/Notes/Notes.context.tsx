@@ -14,7 +14,8 @@ export const NotesContext = React.createContext<INotesContext>({
     currentTask: undefined,
     currentNote: undefined,
     addTask: () => { },
-    addNote: () => { }
+    addNote: () => { },
+    removeNote: () => { }
 })
 
 export const NotesProvider = ({ children }: IChildren) => {
@@ -22,7 +23,7 @@ export const NotesProvider = ({ children }: IChildren) => {
     const [notesDefault, setNotesDefault] = React.useState<noteType[]>([])
     const [currentNote, setCurrentNote] = React.useState<noteType | undefined>()
     const [currentTask, setCurrentTask] = React.useState<ITask | undefined>()
-    const { perfil } = usePerfil()
+    const [currentNoteIndex, setCurrentNoteIndex] = React.useState<number>(notes.findIndex(el => el.id === currentNote?.id))
 
     React.useEffect(() => {
         setNotesDefault(generateValues())
@@ -75,6 +76,16 @@ export const NotesProvider = ({ children }: IChildren) => {
 
     }
 
+    const removeNote = () => {
+        setCurrentNoteIndex(notes.findIndex(el => el.id === currentNote?.id))
+        setNotes(prev => prev.filter(el => el.id != currentNote?.id))
+    }
+
+    React.useEffect(() => {
+        setCurrentNote(notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] || notesDefault[notesDefault.length - 1])
+    }, [notes])
+
+
     const addTask = (label: string) => {
         if (currentNote?.personalNote) {
             let newNote = currentNote
@@ -104,7 +115,8 @@ export const NotesProvider = ({ children }: IChildren) => {
                 handleCurrentTask,
                 currentTask,
                 addTask,
-                addNote
+                addNote,
+                removeNote
             }}>
             {children}
         </NotesContext.Provider>

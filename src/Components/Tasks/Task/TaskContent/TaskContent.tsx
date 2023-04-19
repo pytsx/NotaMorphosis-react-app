@@ -40,11 +40,10 @@ export const TaskContent = ({ task }: ITaskContent) => {
                 style={{
                     width: '100%',
                     display: 'flex',
-                    alignItems: 'center',
                     justifyContent: 'space-between',
                     padding: '0 .4rem'
                 }}>
-                <Typography variant="h4" weight={400}>
+                <Typography wrap="wrap" lineHeight="1.2" variant="h4" weight={400}>
                     {task?.label}
                 </Typography>
 

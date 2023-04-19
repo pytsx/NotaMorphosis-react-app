@@ -1,4 +1,4 @@
-import { MdAdd, MdList } from "react-icons/md"
+import { MdAdd } from "react-icons/md"
 import { AvatarContainer, Typography, Search, MenuContainer, Stack } from "../../../../Components"
 import { MenuLateral } from "../MenuLateral"
 import { IMenuLateral } from "../MenuLateral.types"
@@ -59,15 +59,15 @@ export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
                     background: String(theme?.palette.secondary),
                 }} >
 
-                <Button icon={<MdAdd />} height='1.2rem' text="Nova lista" width='calc(100% - 20px)' onClick={() => addNote()} />
-                <Button
+                <Button icon={<MdAdd />} height='1.2rem' text="Nova lista" width='100%' onClick={() => addNote()} />
+                {/* <Button
                     width="40px"
                     icon={<MdList />}
                     height='1.2rem'
                     justify="center"
                     variant="h2"
                     sx={{ 'justifyContent': 'center', 'alignItems': 'center' }}
-                    onClick={() => { }} />
+                    onClick={() => { }} /> */}
             </Stack>
 
         </MenuLateral>

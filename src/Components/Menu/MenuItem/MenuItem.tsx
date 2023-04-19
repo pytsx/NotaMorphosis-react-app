@@ -1,10 +1,11 @@
+import { MdDeleteOutline, MdEdit } from "react-icons/md"
 import { useTheme } from "../../../Common/Context/Theme"
 import { Theme } from "../../../Common/Context/Theme/Theme.types"
 import { Stack } from "../../Stack"
 import { Typography } from "../../Typography"
-import { ContextMenu } from "./ContextMenu"
 import { MenuItemActiveIndicator, MenuItemStyled, MenuItemWrapperStyled } from "./MenuItem.styled"
 import { IMenuItem } from "./MenuItem.type"
+import { ActionButtons } from "./ActionButtons"
 
 export const MenuItemComponent = ({ isActive, value, contextMenuActive, handleClick, onContextMenu }: IMenuItem) => {
     const { theme } = useTheme()
@@ -43,9 +44,7 @@ export const MenuItemComponent = ({ isActive, value, contextMenuActive, handleCl
                     </span>
                 </Stack>
             </MenuItemWrapperStyled>
-            <div style={{ display: contextMenuActive ? 'flex' : 'none' }}>
-                <ContextMenu />
-            </div>
+            <ActionButtons theme={theme as Theme} isActive={value.personalNote && isActive} />
         </MenuItemStyled>
     )
 }

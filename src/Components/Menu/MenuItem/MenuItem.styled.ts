@@ -11,6 +11,7 @@ export const MenuItemStyled = styled.li<IActive>`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 `
 export const MenuItemWrapperStyled = styled.span<IMenuItemWrapperStyled>`
     padding: .64rem .64rem;

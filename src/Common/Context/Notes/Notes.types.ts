@@ -20,4 +20,5 @@ export interface INotesContext {
     handleCurrentTask: (e: ITask) => void
     addTask: (label: string) => void
     addNote: () => void
+    removeNote: () => void
 }

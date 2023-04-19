@@ -48,7 +48,7 @@ export const ThemeProvider = ({ children }: IChildren) => {
                 blue: themeFUI.palette.blue,
                 typography: {
                     primary: mode == 'dark' ? themeFUI.palette.neutralLight : themeFUI.palette.neutralSecondary,
-                    secondary: mode == 'dark' ? themeFUI.palette.neutralLighterAlt : themeFUI.palette.neutralSecondaryAlt,
+                    secondary: mode == 'dark' ? themeFUI.palette.neutralSecondaryAlt : themeFUI.palette.neutralSecondaryAlt,
                 }
             },
             shape: {
