@@ -7,21 +7,17 @@ import { Button } from "../../Components/Button"
 export const LoginPage = () => {
     const { theme } = useTheme()
     const { createPerfil, perfil } = usePerfil()
-    const [username, setUsername] = React.useState<string | undefined>(undefined)
-    const [email, setEmail] = React.useState<string | undefined>(undefined)
+    const [username, setUsername] = React.useState<string>('')
     const [errorMessage, setErrorMessage] = React.useState<string>(' ')
 
     const handleUsername = (e: string) => {
         setUsername(e)
     }
-    const handleEmail = (e: string) => {
-        setEmail(e)
 
-    }
 
     const handleCreatePerfil = () => {
-        if (username && email) {
-            createPerfil(username, email)
+        if (username) {
+            createPerfil(username)
         } else {
             setErrorMessage('preencha o formulário para prosseguir')
         }
@@ -30,7 +26,7 @@ export const LoginPage = () => {
     React.useEffect(() => {
         const handleKeyPress = (e: KeyboardEvent) => {
             if (e.code == 'Enter') {
-                if (username && email) {
+                if (username) {
 
                     handleCreatePerfil()
                 } else {
@@ -47,7 +43,7 @@ export const LoginPage = () => {
     })
     return (
         <Stack
-            position="absolute"
+            position="fixed"
             align="center"
             justify="center"
             width="100%"
@@ -83,9 +79,6 @@ export const LoginPage = () => {
                 <Stack direction="column" >
 
                     <AddInput color="" onChange={handleUsername} value={username as string} placeholder="username" />
-                    <AddInput color="" onChange={handleEmail} value={email as string} placeholder="email" />
-
-
                 </Stack>
                 <Stack align="center" justify="center" height="2rem">
                     <Typography color={`${theme?.palette.red}`}>

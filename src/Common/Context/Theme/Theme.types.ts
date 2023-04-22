@@ -3,12 +3,16 @@ export type themeType = {}
 export interface IThemeContext {
     createTheme: (newTheme: {}) => themeType
     theme: Theme | undefined
+    mode: 'light' | 'dark'
     windowSize: {
         width: number
         height: number
     }
 }
 
+export interface ITheme {
+    theme: Theme
+}
 
 // Definindo tipos utilizados pelo theme
 export type Breakpoints = {

@@ -21,13 +21,13 @@ export type noteType = {
     id: string,
     icon: any,
     color: string,
-    personalNote: boolean,
+    isDefault: boolean,
     tasks: ITask[]
 }
 export interface INotesContext {
     notesDefault: noteType[] | []
     notes: noteType[] | []
-    handleCurrentNote: (e: noteType) => void
+    handleCurrentNote: (id: string) => void
     currentNote?: noteType
     currentTask?: ITask
     handleCurrentTask: (e: ITask) => void
@@ -36,4 +36,5 @@ export interface INotesContext {
     removeNote: () => void
     removeTask: (id: string) => void
     completeTask: (id: string) => void
+    isLoading: boolean
 }

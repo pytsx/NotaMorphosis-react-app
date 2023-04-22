@@ -9,14 +9,16 @@ export const Typography = ({
     weight = 600,
     family,
     color,
-    lineHeight = `${p * 0.06}`,
+    lineHeight = `.8rem`,
     letterSpace = `-.020rem`,
     display = `inline`,
     text,
     sx,
     wrap = 'nowrap',
     margin,
-    padding
+    className,
+    padding,
+    justify
 }: ITypography) => {
     const { theme } = useTheme()
     const sizes: { [key: string]: number } = {
@@ -43,7 +45,8 @@ export const Typography = ({
     }[variant] || P;
     return (
         <Component
-            lineHeight={`${lineHeight}em`}
+            justify={justify}
+            lineHeight={`${lineHeight}`}
             family={family ? family : String(theme?.typography.fontFamily)}
             weight={weight}
             size={`${sizes[variant]}px`}
@@ -54,6 +57,7 @@ export const Typography = ({
             display={display}
             margin={margin}
             padding={padding}
+            className={className}
         >
             {children ? children : text}
         </Component>

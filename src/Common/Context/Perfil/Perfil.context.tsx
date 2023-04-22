@@ -1,31 +1,40 @@
 import React from "react";
 import { IChildren } from "../../Types";
 import { IPerfil, IPerfilContext } from "./Perfil.types";
+import { useAPI } from "../APIcontext";
 
 export const PerfilContext = React.createContext<IPerfilContext>({
     perfil: {
         username: '',
         email: '',
+        notes: []
     },
     createPerfil: () => { }
 })
 
 export const PerfilProvider = ({ children }: IChildren) => {
     const [perfil, setPerfil] = React.useState<IPerfil>()
-
-    const createPerfil = (username: string, email: string) => {
-        if (username?.trim()?.length != 0 && email?.trim()?.length != 0) {
-
+    const { setUsername, data } = useAPI()
+    const createPerfil = async (username: string) => {
+        if (username?.trim()?.length != 0) {
             let newPerfil = {
                 username: username.trim(),
-                email: email.trim(),
             }
-            setPerfil(newPerfil)
+            const response = await fetch('http://localhost:5000/perfis', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'Application/json'
+                },
+                body: JSON.stringify(newPerfil)
+            })
+
+            const data = await response.json()
+            setUsername(data.username)
+            setPerfil(data)
+            return data
         }
     }
-    React.useEffect(() => {
-        // createPerfil('henrique', 'exemple@pessoa.com')
-    }, [])
+
 
     return (
         <PerfilContext.Provider value={{ perfil, createPerfil }}>

@@ -9,7 +9,6 @@ import React from "react";
 export const TaskContent = ({ task }: ITaskContent) => {
     const { removeTask, currentTask, completeTask } = useNotes()
     const [isActive, setIsActive] = React.useState<boolean>(currentTask?.id == task?.id && task?.isComplete)
-    const [display, setDisplay] = React.useState<boolean>(false)
 
     const handleActive = () => {
         completeTask(task.id)
@@ -19,6 +18,11 @@ export const TaskContent = ({ task }: ITaskContent) => {
     React.useEffect(() => {
         setIsActive(task?.isComplete)
     }, [task?.isComplete, currentTask])
+
+    React.useEffect(() => {
+        setIsActive(task?.isComplete)
+    }, [])
+
     return (
         <Stack style={{ padding: '0 .8rem' }} width="100%">
             <span onClick={() => removeTask(task?.id)}>

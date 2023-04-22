@@ -1,5 +1,5 @@
 import { MdAdd } from "react-icons/md"
-import { AvatarContainer, Typography, Search, MenuContainer, Stack } from "../../../../Components"
+import { AvatarContainer, Typography, Search, Menu, Stack } from "../../../../Components"
 import { MenuLateral } from "../MenuLateral"
 import { IMenuLateral } from "../MenuLateral.types"
 import { Button } from "../../../../Components/Button"
@@ -8,7 +8,7 @@ import { useNotes, usePerfil } from "../../../../Common/Context"
 export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
     const { addNote } = useNotes()
     const { perfil } = usePerfil()
-    let letter = perfil?.username[0] as String
+    let letter = perfil?.username[0] ? perfil?.username[0] as String : '@'
     return (
         <MenuLateral width={width} isActive={isActive} >
 
@@ -43,9 +43,9 @@ export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
                             borderBottom: '1px solid #c9c9c92f',
                             paddingBottom: '.4rem'
                         }}>
-                        <MenuContainer type='default' />
+                        <Menu values={[]} />
                     </Stack>
-                    <MenuContainer />
+                    <Menu values={[]} />
                 </Stack>
             </Stack>
             <Stack

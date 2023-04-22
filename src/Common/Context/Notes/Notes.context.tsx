@@ -3,7 +3,8 @@ import { IChildren } from "../../Types";
 import { INotesContext, ITask, noteType } from "./Notes.types";
 import { v4 as uuidv4 } from 'uuid'
 import { RiFileListLine } from 'react-icons/ri';
-import { generateValues } from "./appData";
+import { MEU_DIA, generateValues } from "./appData";
+import { useAPI } from "../APIcontext";
 
 export const NotesContext = React.createContext<INotesContext>({
     notes: [],
@@ -16,7 +17,8 @@ export const NotesContext = React.createContext<INotesContext>({
     addNote: () => { },
     removeNote: () => { },
     removeTask: () => { },
-    completeTask: () => { }
+    completeTask: () => { },
+    isLoading: false
 
 })
 
@@ -24,25 +26,31 @@ export const NotesProvider = ({ children }: IChildren) => {
     const [notes, setNotes] = React.useState<noteType[] | []>([])
     const [notesDefault, setNotesDefault] = React.useState<noteType[]>([])
     const [currentNote, setCurrentNote] = React.useState<noteType | undefined>()
+    const [currentNoteIndex, setCurrentNoteIndex] = React.useState<number>(notes?.findIndex(el => el.id === currentNote?.id))
+
     const [currentTask, setCurrentTask] = React.useState<ITask | undefined>()
-    const [currentNoteIndex, setCurrentNoteIndex] = React.useState<number>(notes.findIndex(el => el.id === currentNote?.id))
+    const [interator, setInterator] = React.useState<number>(1)
+    const [isLoading, setIsLoading] = React.useState<boolean>(false)
+
+    const { data, setUsername } = useAPI()
 
     React.useEffect(() => {
+
+        setNotes(data?.notes?.filter((el: any) => !el.isDefault))
         setNotesDefault(generateValues())
-        setNotes([])
     }, [])
 
-    const handleCurrentNote = (e: noteType) => {
+    const handleCurrentNote = (id: string) => {
         setCurrentNote(prev => {
             if (prev) {
-                if (prev?.id != e.id) {
+                if (prev?.id != id) {
                     setCurrentTask(undefined)
-                    return e
+                    return prev
                 } else {
                     return prev
                 }
             }
-            return e
+            return prev
         })
     }
 
@@ -57,26 +65,39 @@ export const NotesProvider = ({ children }: IChildren) => {
         })
     }
 
-    const addNote = () => {
-        setNotes(prev => {
-            let lastLabel = prev.length + 1
+    const addNote = async () => {
+        setIsLoading(true)
+        let defaultNote = {
+            label: `Lista ${interator}`,
+            id: `${interator}-${uuidv4()}`,
+            icon: 4,
+            color: '#D1C4A4',
+            isDefault: false,
+            tasks: []
+        }
+        try {
+            // const response = await fetch('http://localhost:5000/notes', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(defaultNote)
+            // })
+            // const data = await response.json()
+            // console.log(data);
+            // setInterator(prev => prev += 1)
+            // setIsLoading(false)
+            // return data
+        } catch (error) {
+            console.log(error);
 
-            let defaultNote = {
-                label: `Lista ${lastLabel}`,
-                id: `${lastLabel}-${uuidv4()}`,
-                icon: <RiFileListLine />,
-                color: '#D1C4A4',
-                personalNote: true,
-                tasks: []
-            }
-
-            return [...prev, defaultNote]
-        })
+            setNotes(prev => {
+                return [...prev, defaultNote]
+            })
+        }
     }
 
-    const updNote = () => {
 
-    }
 
     const removeNote = () => {
         setCurrentNoteIndex(notes.findIndex(el => el.id === currentNote?.id))
@@ -84,12 +105,10 @@ export const NotesProvider = ({ children }: IChildren) => {
         setCurrentNote(notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] || notesDefault[notesDefault.length - 1])
     }
 
-
-
     const addTask = (label: string) => {
-        if (currentNote?.personalNote && label?.trim()?.length != 0) {
+        if (!currentNote?.isDefault && label?.trim()?.length != 0) {
             let newNote = currentNote
-            newNote.tasks.push({
+            newNote?.tasks.push({
                 label,
                 id: `${label?.replaceAll(' ', '-')}-${uuidv4()}`,
                 description: '',
@@ -99,15 +118,17 @@ export const NotesProvider = ({ children }: IChildren) => {
                         id: note.id,
                         label: note.label,
                         icon: note.icon,
-                        isInclude: false
+                        isInclude: note.label == MEU_DIA
                     }))
                 },
                 steps: []
             })
-            setNotes(prev => prev.filter(el => el.id == newNote.id ? newNote : el))
+            setNotes(prev => prev.filter(el => el.id == newNote?.id ? newNote : el))
             setCurrentNote(newNote)
         }
     }
+
+
 
     const completeTask = (id: string) => {
         const updatedTasks = currentNote?.tasks.map(task => {
@@ -129,16 +150,17 @@ export const NotesProvider = ({ children }: IChildren) => {
             setCurrentNote(updatedNote as noteType)
         }
     }
+
     React.useEffect(() => {
         setCurrentNote(currentNoteIndex > 0 ? notes[currentNoteIndex > 0 ? currentNoteIndex - 1 : currentNoteIndex] : notesDefault[notesDefault.length - 1])
     }, [currentNoteIndex])
+
+
+
     const removeTask = (id: string) => {
         console.log(id);
-
     }
-    const updTask = () => {
 
-    }
 
 
 
@@ -155,7 +177,8 @@ export const NotesProvider = ({ children }: IChildren) => {
                 addNote,
                 removeNote,
                 removeTask,
-                completeTask
+                completeTask,
+                isLoading
             }}>
             {children}
         </NotesContext.Provider>

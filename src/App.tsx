@@ -1,14 +1,20 @@
 import { Layout } from "./Page/Layout"
+import { LandingPage } from "./Page/LandingPage"
 import { MainPage } from "./Page/Main"
-import { usePerfil } from "./Common/Context"
-import { LoginPage } from "./Page/Login"
+import { DocPage } from "./Page/Doc"
+import { useNavigate } from "./Common/Context"
 
 function App() {
-  const { perfil } = usePerfil()
+  const { navigate, currentPage } = useNavigate()
   return (
     <Layout>
-      <LoginPage />
-      <MainPage />
+      {
+        currentPage == 1
+          ? <LandingPage />
+          : currentPage == 2
+            ? <MainPage />
+            : <DocPage />
+      }
     </Layout>
   )
 }

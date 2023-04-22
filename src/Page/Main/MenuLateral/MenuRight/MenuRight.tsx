@@ -1,5 +1,5 @@
 import { MdClose } from "react-icons/md"
-import { useNotes } from "../../../../Common/Context"
+import { generateIcon, useNotes } from "../../../../Common/Context"
 import { ITask } from "../../../../Common/Context/Notes/Notes.types"
 import { Stack, Typography } from "../../../../Components"
 import { MenuLateral } from "../MenuLateral"
@@ -41,7 +41,7 @@ export const MenuRight = ({ width, isActive, theme }: IMenuLateral) => {
                 </MenuCard>
                 {
                     currentTask?.role.categories.map(category => (
-                        <MenuButton key={category.id} onClick={() => { }} eq={category.isInclude} label={category.label} icon={category.icon} />
+                        <MenuButton key={category.id} onClick={() => { }} eq={category.isInclude} label={category.label} icon={generateIcon(category.icon)} />
                     ))
                 }
             </Stack>

@@ -29,7 +29,7 @@ export const CheckIcon = ({ active, handleActive }: ICheckIcon) => {
                 justifyContent: 'center'
             }}>
             <span style={{ display: !active ? 'flex' : 'none' }}>
-                <Typography variant="h2" >
+                <Typography variant="h4" >
                     <RiCheckboxBlankCircleLine />
                 </Typography>
             </span>
@@ -37,7 +37,7 @@ export const CheckIcon = ({ active, handleActive }: ICheckIcon) => {
                 transition: `all ${animationMS} ease-in-out`,
                 display: active ? 'flex' : 'none',
             }}>
-                <Typography color={'green'} variant="h2">
+                <Typography color={'green'} variant="h4">
                     <RiCheckboxCircleFill />
                 </Typography>
             </span>
@@ -46,7 +46,7 @@ export const CheckIcon = ({ active, handleActive }: ICheckIcon) => {
                     position: 'absolute',
                     display: hover && !active ? 'flex' : 'none',
                 }} >
-                <Typography variant="captcha">
+                <Typography p={6} variant="h5">
                     <FaCheck />
                 </Typography>
             </div>

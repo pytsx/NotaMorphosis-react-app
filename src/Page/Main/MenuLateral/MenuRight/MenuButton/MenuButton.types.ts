@@ -1,6 +1,6 @@
 export interface IMenuButton {
     label: string
-    icon: string
+    icon: JSX.Element
     eq: boolean
     onClick: (id: string) => void
 }

@@ -4,14 +4,15 @@ import { Theme } from "../../../Common/Context/Theme/Theme.types"
 
 
 export interface IMenuItemContainer {
-    value: noteType
-    icon?: any
-    id?: number | string
+    icon?: number,
+    id?: number | string,
+    color?: string,
+    label?: string
 }
 
 export interface IMenuItem extends IMenuItemContainer {
     isActive: boolean
-    handleClick: (e: noteType) => void
+    handleClick: (id: string) => void
     onContextMenu: (e: any) => void
     contextMenuActive: boolean
 }

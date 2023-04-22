@@ -5,6 +5,7 @@ import { IBoardComponent } from "./Board.type";
 import { Tasks } from "../Tasks";
 import { MdMenu } from "react-icons/md";
 import { SVG } from "../../assets";
+import { generateIcon } from "../../Common/Context";
 
 export const BoardComponent = ({
     primaryColor,
@@ -14,8 +15,7 @@ export const BoardComponent = ({
     width = 0,
     activeMenuIcon,
     onChange,
-    value,
-    index
+    value
 }: IBoardComponent) => (
     <Stack
         direction="column"
@@ -43,7 +43,7 @@ export const BoardComponent = ({
             <Stack>
                 <div style={{ marginLeft: '.8rem' }}>
                     <Typography color={secondaryColor} variant="h1">
-                        {note?.icon}
+                        {generateIcon(note?.icon)}
                     </Typography>
                 </div>
                 <div style={{ marginLeft: '.4rem' }}>
@@ -74,7 +74,7 @@ export const BoardComponent = ({
         <Stack direction="column" height="100vh" align="center" justify="center" style={{ display: note?.tasks?.length != 0 ? 'none' : 'flex', }}>
             <div style={{ width: '200px', height: 'auto' }}>
 
-                <SVG color={note?.color} value={note?.personalNote ? 1 : 2} />
+                <SVG color={note?.color} value={!note?.isDefault ? 1 : 2} />
             </div>
             <Typography color={note?.color} variant="h5" weight={400} margin="2rem">
                 As tarefas de <strong>{note?.label}</strong> serão exibidas aqui
@@ -91,7 +91,7 @@ export const BoardComponent = ({
                 padding: '1.2rem 2.4rem 2.4rem 2.4rem',
                 zIndex: 2000
             }}>
-            <AddInput disabled={!note?.personalNote} onChange={onChange} value={value} placeholder={!note?.personalNote ? `${note?.label}` : "Adicionar uma tarefa"} color={String(primaryColor)} />
+            <AddInput disabled={note?.isDefault} onChange={onChange} value={value} placeholder={note?.isDefault ? `${note?.label}` : "Adicionar uma tarefa"} color={String(primaryColor)} />
         </Stack>
 
     </Stack>

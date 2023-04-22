@@ -10,7 +10,8 @@ const typographyBase = ({
     letterSpace,
     wrap,
     margin,
-    padding
+    padding,
+    justify
 }: ITypographyStyled) => `
     font-size: ${size};
     font-family: ${family};
@@ -22,6 +23,7 @@ const typographyBase = ({
     white-space: ${wrap};
     margin: ${margin};
     padding: ${padding};
+    text-align: ${justify}
 `;
 
 export const P = styled.p<ITypographyStyled>`

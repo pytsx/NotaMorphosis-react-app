@@ -59,3 +59,6 @@ export const Board = ({ width }: { width?: number }) => {
         />
     )
 }
+
+
+

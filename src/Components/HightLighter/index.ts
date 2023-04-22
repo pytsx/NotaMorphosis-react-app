@@ -1,0 +1,1 @@
+export { HightLigter } from './HightLighter'

@@ -12,7 +12,8 @@ export const ThemeContext = React.createContext<IThemeContext>({
     windowSize: {
         width: 0,
         height: 0
-    }
+    },
+    mode: 'dark'
 })
 
 export const ThemeProvider = ({ children }: IChildren) => {
@@ -44,11 +45,12 @@ export const ThemeProvider = ({ children }: IChildren) => {
                 mode: mode,
                 primary: mode == 'dark' ? themeFUI.palette.neutralPrimary : themeFUI.palette.neutralLight,
                 secondary: mode == 'dark' ? themeFUI.palette.neutralPrimaryAlt : themeFUI.palette.neutralLighterAlt,
+                dark: mode == 'dark' ? themeFUI.palette.neutralDark : themeFUI.palette.whiteTranslucent40,
                 red: mode == 'dark' ? themeFUI.palette.red : themeFUI.palette.redDark,
                 blue: themeFUI.palette.blue,
                 typography: {
                     primary: mode == 'dark' ? themeFUI.palette.neutralLight : themeFUI.palette.neutralSecondary,
-                    secondary: mode == 'dark' ? themeFUI.palette.neutralSecondaryAlt : themeFUI.palette.neutralSecondaryAlt,
+                    secondary: mode == 'dark' ? themeFUI.palette.neutralTertiary : themeFUI.palette.neutralSecondaryAlt,
                 }
             },
             shape: {
@@ -59,9 +61,12 @@ export const ThemeProvider = ({ children }: IChildren) => {
             }
         }))
     }, [])
-
+    document.documentElement.style.setProperty('--bg', `${theme?.palette.primary}`);
+    document.documentElement.style.setProperty('--dark', `${theme?.palette.dark}ea`);
+    document.documentElement.style.setProperty('--darkalt', `${theme?.palette.dark}`);
+    document.documentElement.style.setProperty('--shape', `${theme?.shape.borderRadius}rem`);
     return (
-        <ThemeContext.Provider value={{ theme, createTheme, windowSize }}>
+        <ThemeContext.Provider value={{ theme, createTheme, windowSize, mode }}>
             {children}
         </ThemeContext.Provider>
     )

@@ -1,5 +1,5 @@
 import { useTheme } from "../../Common/Context/Theme"
-import { Board } from "../../Components"
+import { Board, Chat } from "../../Components"
 import { MainContainerStyled } from "./Main.styled"
 import { MenuLeft, MenuRight } from "./MenuLateral"
 import React from "react"
@@ -29,7 +29,7 @@ export const MainPage = () => {
     }, [windowSize])
 
     return (
-        <MainContainerStyled>
+        <MainContainerStyled style={{ background: `${theme?.palette.secondary}` }}>
             <MenuLeft width={menuLateralWidth} isActive={menuLeft} theme={theme} />
             <Board width={
                 menuRight && !menuLeft
@@ -41,8 +41,7 @@ export const MainPage = () => {
                             : 0
             } />
             <MenuRight width={menuLateralWidth} isActive={menuRight} theme={theme} />
-
-
+            {/* <Chat messages={[]} /> */}
         </MainContainerStyled >
     )
 }

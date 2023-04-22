@@ -1,15 +1,12 @@
-import { Menu } from "./Menu"
-import { useNotes } from "../../Common/Context"
+import { MenuComponent } from "./Menu"
 
-interface IMenuContainer {
-    type?: string
-}
-export const MenuContainer = ({ type = 'list' }: IMenuContainer) => {
+import { IMenu } from "./Menu.types"
 
-    const { notes, notesDefault } = useNotes()
-    let values = type == 'list' ? notes : notesDefault
+
+export const Menu = ({ values }: IMenu) => {
+
 
     return (
-        <Menu values={values} />
+        <MenuComponent values={values} />
     )
 }

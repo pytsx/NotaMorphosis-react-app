@@ -11,7 +11,12 @@ export const Tasks = () => {
     const handleNotes = () => {
         if (currentNote?.tasks) {
             const diff = 9 - currentNote?.tasks.length
-            const newTasks: any[] = [...currentNote?.tasks]
+            let newTasks: any[] = []
+            if (!currentNote?.isDefault) {
+                newTasks = [...currentNote?.tasks.filter(el => !el?.isComplete)]
+            } else {
+                newTasks = [...currentNote?.tasks]
+            }
             for (let i = 0; i < diff; i++) {
                 newTasks.push(i)
             }

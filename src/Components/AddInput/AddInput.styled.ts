@@ -12,6 +12,6 @@ export const AddInputStyled = styled(Input)`
         font-size: 16px;
         color: ${props => props.color}
     }
-    &:focus{
-    }
+
 `
+

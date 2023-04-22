@@ -22,7 +22,7 @@ export const ActionButtons = ({ isActive, theme }: IActionButtons) => {
             display: isActive ? 'flex' : 'none',
             backdropFilter: 'blur(3px)',
             height: '100%',
-            borderRadius: `${theme.shape.borderRadius}rem`,
+            borderRadius: `${theme?.shape.borderRadius}rem`,
             position: 'absolute',
             right: 0,
             alignItems: 'center',

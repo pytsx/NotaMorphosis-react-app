@@ -12,6 +12,7 @@ export const MenuItemStyled = styled.li<IActive>`
     justify-content: space-between;
     align-items: center;
     position: relative;
+    transition: all 100ms ease-in-out;
 `
 export const MenuItemWrapperStyled = styled.span<IMenuItemWrapperStyled>`
     padding: .64rem .64rem;
@@ -23,7 +24,6 @@ export const MenuItemWrapperStyled = styled.span<IMenuItemWrapperStyled>`
     justify-content: start;
     background: ${props => props.isActive ? '#Fafafa24' : 'transparent'};
     &:hover{
-        background: #Fafafa24;
     }
 `
 
