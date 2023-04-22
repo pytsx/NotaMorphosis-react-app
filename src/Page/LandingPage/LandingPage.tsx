@@ -1,10 +1,11 @@
-import { useTheme } from "../../Common/Context"
-import { Chat, Stack } from "../../Components"
+import { useNavigate, useTheme } from "../../Common/Context"
+import { Chat, Stack, Typography } from "../../Components"
 import { Circles } from "./Circles"
 import { Logo } from "./Logo"
 import { ActionButton } from "./ActionButton"
 import { LandingPageWrapper } from "./LandingPage.styled"
 import { Theme } from "../../Common/Context/Theme/Theme.types"
+import { Button } from "../../Components/Button"
 let mensagens = [
     {
         sender: 'user',
@@ -17,14 +18,21 @@ let mensagens = [
 ]
 export const LandingPageComponent = () => {
     const { theme } = useTheme()
+    const { navigate } = useNavigate()
     return (
         <LandingPageWrapper theme={theme as Theme}>
-            <Logo />
+            {/* <Logo /> */}
             <Circles />
-            <Stack width="100%" align="center" justify="center" position="fixed" style={{ bottom: 0 }}>
+            <Stack height="50vh" align="center" justify="start" direction="column" >
+                <Typography weight={400} p={24} margin="2.4rem 0rem" variant="h1">NotaMorphosis</Typography>
+                <Stack style={{ transform: 'skew(-8deg)' }} align="center" width="fit-content">
+                    <Button elevation onClick={() => navigate(3)} bgcolor={`${theme?.palette.primary}`} icon={1} width="fit-content" text="get start" />
+                    <Button onClick={() => navigate(2)} bgcolor={`${theme?.palette.blue}`} reverse width="fit-content" text="acessar" />
+                </Stack>
+            </Stack>
+            <Stack direction="column" width="100%" align="center" justify="center" position="fixed" style={{ bottom: 0 }}>
                 <Chat placeholder="digite seu username..." messages={mensagens} />
             </Stack>
-            <ActionButton />
-        </LandingPageWrapper>
+        </LandingPageWrapper >
     )
 }

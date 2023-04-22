@@ -1,4 +1,6 @@
+import { generateIcon } from "../../Common/Context"
 import { useTheme } from "../../Common/Context/Theme"
+import { HightLigter } from "../HightLighter"
 import { Stack } from "../Stack"
 import { Typography } from "../Typography"
 import { ButtonStyled } from "./Button.styled"
@@ -7,53 +9,59 @@ import { IButton } from "./Button.type"
 export const Button = ({
     onClick,
     text,
-    position,
-    left,
-    right,
-    bottom,
-    top,
-    width,
-    sx,
     variant = 'h5',
-    height,
+    center = false,
     justify,
     icon,
-    center = false,
-    color
+    color,
+    borderColor = 'transparent',
+    reverse,
+    bgcolor,
+    ...rest
 }: IButton) => {
     const { theme } = useTheme()
     return (
-        <ButtonStyled
-            height={height}
-            style={sx}
-            width={width}
-            position={position}
-            left={left}
-            right={right}
-            bottom={bottom}
-            top={top}
-            onClick={() => onClick()}
-            theme={theme}
-        >
-            <Stack
-                align="center"
-                justify={justify ? justify : 'start'}
-                height={height}
-                width={width}
-                direction="row"
-            >
-                <div style={{ width: 'fit-content', padding: '.4rem', display: icon ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center' }}>
 
-                    <Typography variant="h2">
-                        {icon}
-                    </Typography>
-                </div>
-                <div style={{ width: '100%', padding: '.4rem', display: text ? 'flex' : 'none', alignItems: 'center', justifyContent: center ? 'center' : 'start' }}>
-                    <Typography color={color ? color : undefined} variant={variant}>
-                        {text}
-                    </Typography>
-                </div>
-            </Stack>
-        </ButtonStyled>
+        <HightLigter {...rest} bgcolor={bgcolor}>
+            <ButtonStyled
+                {...rest}
+                onClick={() => onClick()}
+                theme={theme}
+                style={{ border: `1px solid ${borderColor}` }}
+            >
+                <Stack
+                    gap="0"
+                    height="100%"
+                    align="center"
+                    justify={justify ? justify : 'start'}
+                    direction={reverse ? "row-reverse" : 'row'}
+                >
+                    <div
+                        style={{
+                            width: 'fit-content',
+                            height: '100%',
+                            padding: '0rem .2rem',
+                            display: icon ? 'flex' : 'none',
+                        }}>
+
+                        <Typography variant={variant}>
+                            {typeof icon == 'number' ? generateIcon(icon) : icon}
+                        </Typography>
+                    </div>
+                    <div
+                        style={{
+                            width: '100%',
+                            padding: ' .4rem  .2rem',
+                            display: text ? 'flex' : 'none',
+                            alignItems: 'center',
+                            justifyContent: center ? 'center' : 'start'
+                        }}>
+                        <Typography weight={400} color={color ? color : undefined} variant={variant}>
+                            {text}
+                        </Typography>
+                    </div>
+                </Stack>
+            </ButtonStyled>
+        </HightLigter>
     )
 }

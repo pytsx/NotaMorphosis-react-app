@@ -10,16 +10,16 @@ export const APIProvider = ({ children }: IChildren) => {
     const [username, setUsername] = React.useState<string>('')
 
     const fetchAPI = () => {
-        if (username) {
-            console.log('username');
+        // if (username) {
+        //     console.log('username');
 
-            fetch(`http://localhost:5000/perfil/${username.replaceAll(" ", '%20')}}`)
-                .then(response => response.json())
-                .then(data => {
-                    setApiState(data)
-                    setData(data)
-                });
-        }
+        //     fetch(`http://localhost:5000/perfil/${username.replaceAll(" ", '%20')}}`)
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             setApiState(data)
+        //             setData(data)
+        //         });
+        // }
     }
     React.useEffect(() => {
         fetchAPI()

@@ -8,6 +8,7 @@ export interface IHightLighter extends IChildren {
     isActive?: boolean
     className?: string
     bgcolor?: string
+    elevation?: boolean
 }
 
 export interface IHightLighterStyle extends IHightLighter, ITheme {

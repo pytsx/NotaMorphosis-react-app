@@ -4,7 +4,8 @@ import { INavigateContext } from "./Navigate.types";
 
 export const NavigateContext = React.createContext<INavigateContext>({
     currentPage: 0,
-    navigate: () => { }
+    navigate: () => { },
+    prev: () => { }
 })
 
 export const NavigateProvider = ({ children }: IChildren) => {
@@ -20,12 +21,14 @@ export const NavigateProvider = ({ children }: IChildren) => {
             }
             return newPage
         })
-        console.log(history);
+    }
 
+    const prev = () => {
+        navigate(history[history.length - 1])
     }
 
     return (
-        <NavigateContext.Provider value={{ currentPage, navigate }}>
+        <NavigateContext.Provider value={{ currentPage, navigate, prev }}>
             {children}
         </NavigateContext.Provider>
     )

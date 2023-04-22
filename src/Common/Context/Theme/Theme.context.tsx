@@ -57,7 +57,7 @@ export const ThemeProvider = ({ children }: IChildren) => {
                 borderRadius: .16
             },
             typography: {
-                fontFamily: 'Segoe UI, Sans serif'
+                fontFamily: 'Roboto, Sans serif'
             }
         }))
     }, [])

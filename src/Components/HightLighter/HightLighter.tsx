@@ -4,24 +4,24 @@ import { Theme } from "../../Common/Context/Theme/Theme.types"
 import { IHightLighter } from "./HightLighter.types"
 import React from "react"
 
-export const HightLigter = ({ children, bgcolor, className, fullWidth, hightlight = true, clickable = false, isActive }: IHightLighter) => {
+export const HightLigter = ({ children, hightlight = true, clickable = false, elevation = false, ...rest }: IHightLighter) => {
     const { theme } = useTheme()
     const [active, setActive] = React.useState<boolean>(false)
+
     const handleActive = () => {
         if (clickable) {
             setActive(prev => !prev)
         }
     }
+
     return (
         <HightLighterWrapper
-            className={className}
-            hightlight={hightlight}
-            fullWidth={fullWidth}
-            isActive={isActive ? isActive : active}
-            onClick={handleActive}
-            onBlur={handleActive}
+            elevation={elevation}
             theme={theme as Theme}
-            bgcolor={bgcolor}
+            isActive={active}
+            clickable={clickable}
+            hightlight={hightlight}
+            {...rest}
         >
             {children}
         </HightLighterWrapper>

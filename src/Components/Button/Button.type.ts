@@ -13,6 +13,10 @@ export interface IButtonStyled extends IActive {
     justify?: string
     theme?: Theme
     center?: boolean
+    borderColor?: string
+    reverse?: boolean
+    bgcolor?: string
+    elevation?: boolean
 }
 
 export interface IButton extends IButtonStyled, ITypography {

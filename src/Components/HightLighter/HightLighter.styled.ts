@@ -8,5 +8,6 @@ export const HightLighterWrapper = styled.div<IHightLighterStyle>`
     border-radius: ${props => props.theme?.shape?.borderRadius}rem;        
     &:hover {
         background: ${props => props.hightlight && !props.bgcolor || props.isActive && !props.bgcolor ? props.theme?.palette?.secondary : props.bgcolor && props.hightlight ? props.bgcolor : 'transparent'}; 
+        box-shadow:  ${props => props.elevation ? `0px 0px 10px ${props.bgcolor}` : ''};
     }
 `

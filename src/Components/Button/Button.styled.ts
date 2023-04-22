@@ -3,7 +3,7 @@ import { IButtonStyled } from "./Button.type";
 
 export const ButtonStyled = styled.button<IButtonStyled>`
     all: unset;
-    padding: .64rem .0rem;
+    padding: .2rem .8rem;
 
     position: ${props => props.position ? props.position : 'relative'};
     bottom: ${props => props.bottom};
@@ -16,6 +16,5 @@ export const ButtonStyled = styled.button<IButtonStyled>`
     height: ${props => props.height ? props.height : '100%'};
     background: ${props => props.isActive ? '#Fafafa24' : 'transparent'};
     &:hover{
-        background: #Fafafa24;
     }
 `

@@ -1,19 +1,22 @@
-import { useDoc, useTheme } from "../../Common/Context"
+import { useDoc, useNavigate, useTheme } from "../../Common/Context"
 import { List, Stack, Typography } from "../../Components"
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import vsLight from 'prism-react-renderer/themes/vsLight';
+import { MdArrowBack } from "react-icons/md";
+import { Button } from "../../Components/Button";
 
 export const DocPage = () => {
     const { theme, mode } = useTheme()
     const { currentDoc, handleCurrentDoc, docs } = useDoc()
-
+    const { prev } = useNavigate()
 
     return (
         <Stack height="100%" align="center" style={{}} >
 
-            <Stack style={{ zIndex: 2000 }} position="fixed" width="fit-content" align="center" height="100%" padding='0rem .4rem'>
+            <Stack direction="column" style={{ zIndex: 2000 }} position="fixed" width="fit-content" align="center" justify="space-evenly" height="100%" padding='0rem .4rem'>
+                <Button variant="h1" elevation bgcolor={`${theme?.palette.dark}`} icon={<MdArrowBack />} onClick={() => prev()} />
                 <List handle={handleCurrentDoc} list={docs} />
             </Stack>
             <Stack
