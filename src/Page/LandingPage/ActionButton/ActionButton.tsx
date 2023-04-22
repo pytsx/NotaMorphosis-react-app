@@ -1,4 +1,4 @@
-import { SlArrowRight } from "react-icons/Sl"
+import { SlArrowRight } from "react-icons/sl"
 import { HightLigter, Stack, Typography } from "../../../Components"
 import { useNavigate, useTheme } from "../../../Common/Context"
 
