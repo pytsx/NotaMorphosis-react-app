@@ -24,10 +24,10 @@ export const LandingPageComponent = () => {
             {/* <Logo /> */}
             <Circles />
             <Stack height="50vh" align="center" justify="start" direction="column" >
-                <Typography weight={400} p={24} margin="2.4rem 0rem" variant="h1">NotaMorphosis</Typography>
+                <Typography color="#fafafa16" weight={800} p={100} margin="2rem 0rem" variant="h1">NotaMorphosis</Typography>
                 <Stack style={{ transform: 'skew(-8deg)' }} align="center" width="fit-content">
-                    <Button elevation onClick={() => navigate(3)} bgcolor={`${theme?.palette.primary}`} icon={1} width="fit-content" text="get start" />
-                    <Button onClick={() => navigate(2)} bgcolor={`${theme?.palette.blue}`} reverse width="fit-content" text="acessar" />
+                    <Button onClick={() => navigate(3)} bgcolor={`${theme?.palette.green}`} icon={1} width="fit-content" text="get start" />
+                    <Button elevation onClick={() => navigate(2)} bgcolor={`${theme?.palette.blue}`} reverse width="fit-content" text="acessar" />
                 </Stack>
             </Stack>
             <Stack direction="column" width="100%" align="center" justify="center" position="fixed" style={{ bottom: 0 }}>

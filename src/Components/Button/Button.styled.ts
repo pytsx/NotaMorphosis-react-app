@@ -4,7 +4,6 @@ import { IButtonStyled } from "./Button.type";
 export const ButtonStyled = styled.button<IButtonStyled>`
     all: unset;
     padding: .2rem .8rem;
-
     position: ${props => props.position ? props.position : 'relative'};
     bottom: ${props => props.bottom};
     left: ${props => props.left};

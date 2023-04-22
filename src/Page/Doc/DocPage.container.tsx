@@ -15,7 +15,14 @@ export const DocPage = () => {
     return (
         <Stack height="100%" align="center" style={{}} >
 
-            <Stack direction="column" style={{ zIndex: 2000 }} position="fixed" width="fit-content" align="center" justify="space-evenly" height="100%" padding='0rem .4rem'>
+            <Stack
+                direction="column"
+                style={{ zIndex: 2000 }}
+                position="fixed" width="fit-content"
+                align="center" justify="space-evenly"
+                height="100%"
+                padding='0rem .4rem'
+            >
                 <Button variant="h1" elevation bgcolor={`${theme?.palette.dark}`} icon={<MdArrowBack />} onClick={() => prev()} />
                 <List handle={handleCurrentDoc} list={docs} />
             </Stack>
@@ -23,7 +30,7 @@ export const DocPage = () => {
                 width="100%"
                 height="100%"
                 style={{
-                    background: `${theme?.palette.primary}`,
+                    background: `${theme?.palette.bgcolor}`,
                 }}>
 
                 {

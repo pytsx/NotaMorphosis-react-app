@@ -10,8 +10,9 @@ interface IChat {
         message: string
     }[]
     placeholder?: string
+    width?: string
 }
-export const Chat = ({ messages, placeholder = 'o que está pensando?' }: IChat) => {
+export const Chat = ({ messages, placeholder = 'o que está pensando?', width = '600px' }: IChat) => {
     const { theme } = useTheme()
 
     const [inputValue, setInputValue] = React.useState<string>('')
@@ -26,18 +27,18 @@ export const Chat = ({ messages, placeholder = 'o que está pensando?' }: IChat)
         <Stack
             align="center"
             justify="center"
-            width="600px"
+            width={width}
             style={{
                 background: 'transparent',
-                zIndex: 10000,
-                boxShadow: `0px 0px 4px  #00000064`
+                zIndex: 100001,
+                boxShadow: `0px 0px 2px  #00000064`
             }}>
 
             <Stack
                 direction="column"
                 padding='.8rem 1.6rem .4rem 1.6rem'
                 style={{
-                    background: `${theme?.palette.dark}ae`,
+                    background: `${theme?.palette.bgchat}`,
                     backdropFilter: 'blur(30px)',
                     borderRadius: `${theme?.shape.borderRadius}rem`,
 

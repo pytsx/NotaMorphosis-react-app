@@ -10,5 +10,5 @@ export const LandingPageWrapper = styled.div<ITheme>`
     justify-content: center;
     align-items: center;
     user-select: none;
-    background: ${props => props?.theme?.palette?.secondary};
+    background: ${props => props?.theme?.palette?.bgcolor};
 `

@@ -2,7 +2,6 @@ import React from "react";
 import { IChildren } from "../../Types";
 import { IThemeContext, Theme } from "./Theme.types";
 import createTheme from "./createTheme";
-import { NeutralColors } from '@fluentui/theme';
 import * as Fui from '@fluentui/theme';
 
 
@@ -43,13 +42,17 @@ export const ThemeProvider = ({ children }: IChildren) => {
         setTheme(createTheme({
             palette: {
                 mode: mode,
-                primary: mode == 'dark' ? themeFUI.palette.neutralPrimary : themeFUI.palette.neutralLight,
-                secondary: mode == 'dark' ? themeFUI.palette.neutralPrimaryAlt : themeFUI.palette.neutralLighterAlt,
-                dark: mode == 'dark' ? themeFUI.palette.neutralDark : themeFUI.palette.whiteTranslucent40,
+                primary: mode == 'dark' ? '#3D85C6' : themeFUI.palette.neutralLight,
+                secondary: mode == 'dark' ? '#1f1f1f' : themeFUI.palette.neutralLighterAlt,
+                dark: mode == 'dark' ? '#000' : themeFUI.palette.whiteTranslucent40,
+                bubble: mode == 'dark' ? '#2d2d2d' : themeFUI.palette.whiteTranslucent40,
+                bgchat: mode == 'dark' ? '#1d1d1d' : themeFUI.palette.whiteTranslucent40,
+                bgcolor: mode == 'dark' ? '#1a1a1a' : themeFUI.palette.whiteTranslucent40,
                 red: mode == 'dark' ? themeFUI.palette.red : themeFUI.palette.redDark,
-                blue: themeFUI.palette.blue,
+                blue: '#3D85C6',
+                green: '#4AC959',
                 typography: {
-                    primary: mode == 'dark' ? themeFUI.palette.neutralLight : themeFUI.palette.neutralSecondary,
+                    primary: mode == 'dark' ? '#E1E1E1' : themeFUI.palette.neutralSecondary,
                     secondary: mode == 'dark' ? themeFUI.palette.neutralTertiary : themeFUI.palette.neutralSecondaryAlt,
                 }
             },
@@ -61,7 +64,7 @@ export const ThemeProvider = ({ children }: IChildren) => {
             }
         }))
     }, [])
-    document.documentElement.style.setProperty('--bg', `${theme?.palette.primary}`);
+    document.documentElement.style.setProperty('--bg', `${theme?.palette.bgcolor}`);
     document.documentElement.style.setProperty('--dark', `${theme?.palette.dark}ea`);
     document.documentElement.style.setProperty('--darkalt', `${theme?.palette.dark}`);
     document.documentElement.style.setProperty('--shape', `${theme?.shape.borderRadius}rem`);

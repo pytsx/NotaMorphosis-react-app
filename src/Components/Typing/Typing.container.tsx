@@ -27,7 +27,7 @@ export const Typing = ({ delay, text, onComplete, ...rest }: ITyping) => {
 
 
     return (
-        <TypingComponent {...rest} text={currentText} />
+        <TypingComponent {...rest} text={delay == 0 ? text : currentText} />
     )
 }
 

@@ -17,6 +17,7 @@ export interface IButtonStyled extends IActive {
     reverse?: boolean
     bgcolor?: string
     elevation?: boolean
+    circle?: boolean
 }
 
 export interface IButton extends IButtonStyled, ITypography {

@@ -23,7 +23,7 @@ export const BoardComponent = ({
         width={`calc(100% - ${width}px)`}
         height="100%"
         style={{
-            background: String(theme?.palette?.primary),
+            background: String(theme?.palette?.bgcolor),
         }}>
         <Stack
             position='absolute'

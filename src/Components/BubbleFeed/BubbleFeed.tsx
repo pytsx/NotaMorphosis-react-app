@@ -23,7 +23,7 @@ export const BubbleFeed = ({ messages }: IBubbleFeed) => {
             {
                 bubbles?.map((bubble, index) => (
                     <Stack style={{ marginTop: '.16rem', marginBottom: '.16rem' }} justify={bubble?.sender == 'user' ? "end" : 'start'} width="100%">
-                        <Bubble sender={bubble.sender} className="appear" label={bubble?.message} key={bubble?.message} onComplete={handleBubbleTypingComplete} />
+                        <Bubble sender={bubble?.sender} className="appear" label={bubble?.message} key={bubble?.message} onComplete={handleBubbleTypingComplete} />
                     </Stack>
                 ))
             }

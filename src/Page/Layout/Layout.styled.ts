@@ -7,5 +7,6 @@ export interface ILayoutContinaer {
 export const LayoutContainer = styled.div<ILayoutContinaer>`
     width: 100vw;
     height: 100vh;
-    background: ${props => String(props?.theme?.palette?.secondary)}
+    position: relative;
+    background: ${props => String(props?.theme?.palette?.bgcolor)};
 `

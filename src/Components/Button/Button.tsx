@@ -17,12 +17,13 @@ export const Button = ({
     borderColor = 'transparent',
     reverse,
     bgcolor,
+    circle,
     ...rest
 }: IButton) => {
     const { theme } = useTheme()
     return (
 
-        <HightLigter {...rest} bgcolor={bgcolor}>
+        <HightLigter borderRadius={circle ? '50rem' : `${theme?.shape.borderRadius}rem`} {...rest} bgcolor={bgcolor}>
             <ButtonStyled
                 {...rest}
                 onClick={() => onClick()}
@@ -56,7 +57,7 @@ export const Button = ({
                             alignItems: 'center',
                             justifyContent: center ? 'center' : 'start'
                         }}>
-                        <Typography weight={400} color={color ? color : undefined} variant={variant}>
+                        <Typography weight={200} color={color ? color : `${theme?.palette.typography.primary}`} variant={variant}>
                             {text}
                         </Typography>
                     </div>
