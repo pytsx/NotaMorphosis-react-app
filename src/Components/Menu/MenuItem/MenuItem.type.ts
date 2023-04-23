@@ -1,12 +1,7 @@
 import { Theme } from "../../../Common/Context/Theme/Theme.types"
 import { menuPropsType } from "../Menu.types"
 
-export interface IMenuItemContainer {
-    icon?: number,
-    id?: number | string,
-    color?: string,
-    label?: string
-}
+
 
 export interface IMenuItem extends menuPropsType {
     isActive: boolean

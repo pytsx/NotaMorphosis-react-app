@@ -6,7 +6,7 @@ import { MenuItemActiveIndicator, MenuItemStyled, MenuItemWrapperStyled } from "
 import { IMenuItem } from "./MenuItem.type"
 import { generateIcon, useNotes } from "../../../Common/Context"
 
-export const MenuItemComponent = ({ isActive, color, icon, label, id, handleClick, onContextMenu }: IMenuItem) => {
+export const MenuItemComponent = ({ isActive, tasks, color, icon, label, id, handleClick, onContextMenu }: IMenuItem) => {
     const { theme } = useTheme()
     const { isLoading, currentNote } = useNotes()
     return (
@@ -36,14 +36,14 @@ export const MenuItemComponent = ({ isActive, color, icon, label, id, handleClic
                     <span style={{
                         background: String(theme?.palette?.bgcolor),
                         width: ' fit-content',
-                        height: 'fit-content',
+                        height: '1.4rem',
                         padding: '.32rem ',
                         borderRadius: '50rem',
-                        opacity: currentNote?.id == id && currentNote?.tasks?.length ? 1 : 0,
+                        opacity: tasks?.filter(el => !el?.isComplete)?.length ? 1 : 0,
                         boxShadow: `0px 1px 4px -1px ${String(theme?.palette?.dark)}`
                     }}>
                         <Typography variant="captcha" weight={400} >
-                            {currentNote?.tasks?.length}
+                            {tasks?.length}
                         </Typography>
                     </span>
                 </Stack>

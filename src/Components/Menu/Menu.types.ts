@@ -4,6 +4,7 @@ export type menuPropsType = {
     icon: number,
     label: string,
     color: string,
+    tasks?: any[]
 }
 export interface IMenu {
     values: menuPropsType[]

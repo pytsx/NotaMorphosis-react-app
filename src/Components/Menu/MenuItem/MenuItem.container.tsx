@@ -1,5 +1,4 @@
 import { MenuItemComponent } from "./MenuItem"
-import { IMenuItemContainer } from "./MenuItem.type"
 import { useNotes } from "../../../Common/Context"
 import React from "react"
 import { menuPropsType } from "../Menu.types"

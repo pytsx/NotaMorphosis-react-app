@@ -10,7 +10,7 @@ export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
     const { addNote, notesDefault, notes, handleCurrentNote } = useNotes()
     React.useEffect(() => {
         notesDefault.forEach(obj => {
-            delete obj.tasks, obj.isDefault
+            delete obj.isDefault
         })
     }, [])
 

@@ -63,6 +63,7 @@ export const NotesProvider = ({ children }: IChildren) => {
 
     const addNote = async () => {
         setIsLoading(true)
+        setInterator(prev => prev += 1)
         let defaultNote = {
             label: `Lista ${interator}`,
             id: `${interator}-${uuidv4()}`,
