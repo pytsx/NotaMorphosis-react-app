@@ -42,10 +42,11 @@ export const NotesProvider = ({ children }: IChildren) => {
 
     const handleCurrentNote = (id: string) => {
         if (notes) {
-
+            setCurrentTask(undefined)
             let allNotes = [...notes, ...notesDefault]
             setCurrentNote(allNotes.find(el => el.id == id))
         } else {
+            setCurrentTask(undefined)
             setCurrentNote(notesDefault.find(el => el.id == id))
         }
     }
