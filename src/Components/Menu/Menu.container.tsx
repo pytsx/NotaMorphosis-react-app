@@ -3,10 +3,9 @@ import { MenuComponent } from "./Menu"
 import { IMenu } from "./Menu.types"
 
 
-export const Menu = ({ values }: IMenu) => {
-
+export const Menu = ({ ...rest }: IMenu) => {
 
     return (
-        <MenuComponent values={values} />
+        <MenuComponent {...rest} />
     )
 }

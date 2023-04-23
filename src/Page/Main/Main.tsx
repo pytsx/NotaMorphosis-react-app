@@ -1,9 +1,9 @@
 import { useTheme } from "../../Common/Context/Theme"
-import { Board, Chat } from "../../Components"
 import { MainContainerStyled } from "./Main.styled"
 import { MenuLeft, MenuRight } from "./MenuLateral"
 import React from "react"
 import { useNotes } from "../../Common/Context"
+import { Board } from "./Board"
 
 export const MainPage = () => {
     const { theme, windowSize } = useTheme()

@@ -1,11 +1,11 @@
-import { Stack } from "../Stack";
-import { Typography } from "../Typography";
-import { AddInput } from "../AddInput";
+import { Stack } from "../../../Components/Stack";
+import { Typography } from "../../../Components/Typography";
+import { AddInput } from "../../../Components/AddInput";
 import { IBoardComponent } from "./Board.type";
-import { Tasks } from "../Tasks";
+import { Tasks } from "../../../Components/Tasks";
 import { MdMenu } from "react-icons/md";
-import { SVG } from "../../assets";
-import { generateIcon } from "../../Common/Context";
+import { SVG } from "../../../assets";
+import { generateIcon } from "../../../Common/Context";
 
 export const BoardComponent = ({
     primaryColor,
@@ -30,7 +30,7 @@ export const BoardComponent = ({
             style={{
                 display: note ? 'flex' : 'none',
                 flexDirection: 'column',
-                background: `${theme?.palette?.primary}0f`,
+                background: `${theme?.palette?.bgcolor}0f`,
                 backdropFilter: 'blur(12px)',
                 padding: '2.4rem 2.4rem 1.2rem 2.4rem',
                 zIndex: 2000
@@ -86,7 +86,7 @@ export const BoardComponent = ({
                 position: 'absolute',
                 bottom: 0,
                 visibility: note ? 'visible' : 'hidden',
-                background: `${theme?.palette?.primary}0f`,
+                background: `${theme?.palette?.bgcolor}0f`,
                 backdropFilter: 'blur(12px)',
                 padding: '1.2rem 2.4rem 2.4rem 2.4rem',
                 zIndex: 2000

@@ -7,4 +7,5 @@ export type menuPropsType = {
 }
 export interface IMenu {
     values: menuPropsType[]
+    handleClick: (id: string) => void
 }

@@ -21,8 +21,8 @@ export type noteType = {
     id: string,
     icon: any,
     color: string,
-    isDefault: boolean,
-    tasks: ITask[]
+    isDefault?: boolean,
+    tasks?: ITask[]
 }
 export interface INotesContext {
     notesDefault: noteType[] | []

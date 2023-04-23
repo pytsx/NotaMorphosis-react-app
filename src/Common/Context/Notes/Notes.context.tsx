@@ -41,17 +41,13 @@ export const NotesProvider = ({ children }: IChildren) => {
     }, [])
 
     const handleCurrentNote = (id: string) => {
-        setCurrentNote(prev => {
-            if (prev) {
-                if (prev?.id != id) {
-                    setCurrentTask(undefined)
-                    return prev
-                } else {
-                    return prev
-                }
-            }
-            return prev
-        })
+        if (notes) {
+
+            let allNotes = [...notes, ...notesDefault]
+            setCurrentNote(allNotes.find(el => el.id == id))
+        } else {
+            setCurrentNote(notesDefault.find(el => el.id == id))
+        }
     }
 
     const handleCurrentTask = (e: ITask) => {
@@ -75,6 +71,16 @@ export const NotesProvider = ({ children }: IChildren) => {
             isDefault: false,
             tasks: []
         }
+        let newArr: noteType[] = []
+        setTimeout(() => {
+            if (!notes) {
+                setNotes([defaultNote])
+            } else {
+                setNotes(prev => [...prev, defaultNote])
+            }
+            setIsLoading(false)
+        }, 200)
+        return
         try {
             // const response = await fetch('http://localhost:5000/notes', {
             //     method: 'POST',
@@ -108,7 +114,7 @@ export const NotesProvider = ({ children }: IChildren) => {
     const addTask = (label: string) => {
         if (!currentNote?.isDefault && label?.trim()?.length != 0) {
             let newNote = currentNote
-            newNote?.tasks.push({
+            newNote?.tasks?.push({
                 label,
                 id: `${label?.replaceAll(' ', '-')}-${uuidv4()}`,
                 description: '',
@@ -131,7 +137,7 @@ export const NotesProvider = ({ children }: IChildren) => {
 
 
     const completeTask = (id: string) => {
-        const updatedTasks = currentNote?.tasks.map(task => {
+        const updatedTasks = currentNote?.tasks?.map(task => {
             if (task.id === id) {
                 return {
                     ...task,

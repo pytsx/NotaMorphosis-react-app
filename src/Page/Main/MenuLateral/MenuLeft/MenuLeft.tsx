@@ -4,9 +4,17 @@ import { MenuLateral } from "../MenuLateral"
 import { IMenuLateral } from "../MenuLateral.types"
 import { Button } from "../../../../Components/Button"
 import { useNotes, usePerfil } from "../../../../Common/Context"
+import React from "react"
 
 export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
-    const { addNote } = useNotes()
+    const { addNote, notesDefault, notes, handleCurrentNote } = useNotes()
+    React.useEffect(() => {
+        notesDefault.forEach(obj => {
+            delete obj.tasks, obj.isDefault
+        })
+    }, [])
+
+
     const { perfil } = usePerfil()
     let letter = perfil?.username[0] ? perfil?.username[0] as String : '@'
     return (
@@ -43,9 +51,9 @@ export const MenuLeft = ({ width, isActive, theme }: IMenuLateral) => {
                             borderBottom: '1px solid #c9c9c92f',
                             paddingBottom: '.4rem'
                         }}>
-                        <Menu values={[]} />
+                        <Menu handleClick={handleCurrentNote} values={notesDefault} />
                     </Stack>
-                    <Menu values={[]} />
+                    <Menu handleClick={handleCurrentNote} values={notes} />
                 </Stack>
             </Stack>
             <Stack

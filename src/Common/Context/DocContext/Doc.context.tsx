@@ -2,10 +2,21 @@ import React from "react";
 import { IChildren } from "../../Types";
 import { IDocContext, docType } from "./Doc.types";
 import { v4 as uuidv4 } from 'uuid'
-import { Chat, AddInput, AvatarContainer, Board, Bubble, BubbleFeed, CheckIcon, Divider, HightLigter, List, Menu, Search, Stack, Typing, Typography } from "../../../Components";
+import {
+    Chat,
+    AddInput,
+    AvatarContainer,
+    Bubble,
+    BubbleFeed,
+    CheckIcon,
+    HightLigter,
+    List,
+    Search,
+    Typing,
+    Typography
+} from "../../../Components";
 import { Button } from "../../../Components/Button";
 import { ListItem } from "../../../Components/List/ListItem";
-import { Tasks } from "../../../Components/Tasks";
 
 export const DocContext = React.createContext<IDocContext>({
     currentDoc: undefined,
@@ -33,15 +44,7 @@ const lista = [
             `,
         scope: { AvatarContainer }
     },
-    {
-        label: 'Board',
-        id: uuidv4(),
-        description: 'O componente "Board" é um componente funcional React que importa alguns hooks e outros componentes, incluindo o "BoardComponent" que é renderizado na chamada de retorno do componente "Board". O "Board" recebe uma prop "width" opcional que é usada na chamada de retorno do "BoardComponent". O "Board" também usa os hooks "useNotes" e "useTheme" para obter os estados atuais das notas e do tema, respectivamente. \n O "Board" define um estado local usando o hook "useState" do React para armazenar o valor da entrada de texto para a adição de uma nova tarefa e para alternar a visibilidade de um ícone de menu.O componente também tem dois efeitos colaterais definidos com o hook "useEffect" do React.O primeiro efeito colateral é usado para alternar a visibilidade do ícone do menu com base no tamanho atual da janela.O segundo efeito colateral é usado para adicionar um evento de teclado para a tecla "Enter" para adicionar uma tarefa ao pressionar a tecla. \n A chamada de retorno do "BoardComponent" é passada para o "onChange" e "value" props, que são usados em um campo de entrada de texto para adicionar uma nova tarefa.O "BoardComponent" usa o componente "Tasks" para renderizar as tarefas existentes e o componente "SVG" para renderizar o ícone do cabeçalho da nota. \n O "BoardComponent" é um componente funcional que recebe as propriedades "primaryColor", "secondaryColor", "note", "theme", "width", "activeMenuIcon", "onChange" e "value".O "BoardComponent" usa o componente "Stack" do Chakra UI para criar a estrutura do quadro de notas.O componente tem três pilhas(stacks): uma para o cabeçalho da nota, outra para as tarefas e outra para o campo de entrada de texto.O cabeçalho da nota inclui um ícone de menu, o ícone da nota e um rótulo da nota.A pilha de tarefas é usada para renderizar as tarefas existentes, enquanto a pilha do campo de entrada de texto é usada para adicionar novas tarefas.O componente "AddInput" é usado para o campo de entrada de texto e é desativado se a nota for a nota padrão.O componente "SVG" é usado para renderizar o ícone do cabeçalho da nota.',
-        code: `
-            <Board />
-            `,
-        scope: { Board }
-    },
+
     {
         label: 'Bubble',
         id: uuidv4(),
@@ -148,24 +151,7 @@ const lista = [
             `,
         scope: { Search }
     },
-    {
-        label: 'Stack',
-        id: uuidv4(),
-        description: 'O componente Stack é usado para organizar elementos em uma pilha vertical ou horizontal.Ele permite que você empilhe vários elementos um em cima do outro ou lado a lado.',
-        code: `
-            <Stack > </Stack>
-            `,
-        scope: { Stack }
-    },
-    {
-        label: 'Tasks',
-        id: uuidv4(),
-        description: ' O componente Tasks é usado para exibir uma lista de tarefas ou afazeres.Ele geralmente inclui recursos como a capacidade de adicionar, remover e marcar tarefas como concluídas.',
-        code: `
-            <Tasks />
-            `,
-        scope: { Tasks }
-    },
+
     {
         label: 'Typing',
         id: uuidv4(),

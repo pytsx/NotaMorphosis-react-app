@@ -1,7 +1,5 @@
-import { noteType } from "../../../Common/Context/Notes/Notes.types"
 import { Theme } from "../../../Common/Context/Theme/Theme.types"
-
-
+import { menuPropsType } from "../Menu.types"
 
 export interface IMenuItemContainer {
     icon?: number,
@@ -10,7 +8,7 @@ export interface IMenuItemContainer {
     label?: string
 }
 
-export interface IMenuItem extends IMenuItemContainer {
+export interface IMenuItem extends menuPropsType {
     isActive: boolean
     handleClick: (id: string) => void
     onContextMenu: (e: any) => void

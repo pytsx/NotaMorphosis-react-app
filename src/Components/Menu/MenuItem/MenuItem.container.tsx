@@ -22,7 +22,6 @@ export const MenuItem = ({ id, ...rest }: menuPropsType) => {
             handleClick={handleCurrentNote}
             {...rest}
             isActive={currentNote?.id == id} id={id}
-            contextMenuActive={contextMenuIsActive}
-        />
+            contextMenuActive={contextMenuIsActive} />
     )
 }
