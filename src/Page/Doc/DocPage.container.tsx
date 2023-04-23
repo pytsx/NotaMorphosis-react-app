@@ -17,13 +17,20 @@ export const DocPage = () => {
 
             <Stack
                 direction="column"
-                style={{ zIndex: 2000 }}
-                position="fixed" width="fit-content"
-                align="center" justify="space-evenly"
+
+                style={{
+                    background: `${theme?.palette.secondary}`,
+                    zIndex: 2000
+                }}
+                gap='2rem'
+                position="fixed"
+                width="fit-content"
+                align="center"
+                justify="start"
                 height="100%"
-                padding='0rem .4rem'
+                padding='2rem .4rem'
             >
-                <Button variant="h1" elevation bgcolor={`${theme?.palette.dark}`} icon={<MdArrowBack />} onClick={() => prev()} />
+                <Button variant="h1" elevation bgcolor={`${theme?.palette.secondary}`} icon={<MdArrowBack />} onClick={() => prev()} />
                 <List handle={handleCurrentDoc} list={docs} />
             </Stack>
             <Stack

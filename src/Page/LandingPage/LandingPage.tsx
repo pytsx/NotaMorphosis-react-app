@@ -1,5 +1,5 @@
 import { useNavigate, useTheme } from "../../Common/Context"
-import { Chat, Stack, Typography } from "../../Components"
+import { Chat, Stack, Typing, Typography } from "../../Components"
 import { Circles } from "./Circles"
 import { Logo } from "./Logo"
 import { ActionButton } from "./ActionButton"
@@ -23,10 +23,39 @@ export const LandingPageComponent = () => {
         <LandingPageWrapper theme={theme as Theme}>
             {/* <Logo /> */}
             <Circles />
-            <Stack height="50vh" align="center" justify="start" direction="column" >
-                <Typography color="#fafafa16" weight={800} p={100} margin="2rem 0rem" variant="h1">NotaMorphosis</Typography>
-                <Stack style={{ transform: 'skew(-8deg)' }} align="center" width="fit-content">
-                    <Button onClick={() => navigate(3)} bgcolor={`${theme?.palette.green}`} icon={1} width="fit-content" text="get start" />
+            <Stack
+                height="50vh"
+                align="center"
+                justify="start"
+                direction="column" >
+
+                <Stack width="fit-content" style={{ minWidth: '30vw' }}>
+
+
+                    <Typing
+                        color="#fafafa16"
+                        weight={800}
+                        p={100}
+                        margin="-3.2rem 0rem"
+                        variant="h1"
+                        text="NotaMorphosis"
+                        onComplete={() => { }}
+                        delay={100}
+                    />
+                </Stack>
+                <Stack
+                    style={{
+                        transform: 'skew(-6deg)'
+                    }}
+                    align="center"
+                    width="fit-content"
+                >
+                    <Button
+                        onClick={() => navigate(3)}
+                        bgcolor={`${theme?.palette.green}`}
+                        icon={1}
+                        width="fit-content"
+                        text="get start" />
                     <Button elevation onClick={() => navigate(2)} bgcolor={`${theme?.palette.blue}`} reverse width="fit-content" text="acessar" />
                 </Stack>
             </Stack>
