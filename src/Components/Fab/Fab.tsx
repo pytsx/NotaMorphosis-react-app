@@ -1,14 +1,24 @@
 import React from "react"
 import { Button } from "../Button"
 import { Stack } from "../Stack"
-import { Chat } from "../Chat"
-import { useTheme } from "../../Common/Context"
+import { IChildren } from "../../Common/Types"
 
-export const Fab = () => {
-    const { theme } = useTheme()
+export interface IFab extends IChildren {
+    icon_open?: JSX.Element | number
+    icon_close?: JSX.Element | number
+    text_open?: string
+    text_close?: string
+    handleClick: () => void
+}
+
+export const Fab = ({ icon_open, handleClick, icon_close, text_close, text_open, children }: IFab) => {
     const [isActive, setIsActive] = React.useState<boolean>(false)
     const handleActive = () => {
         setIsActive(prev => !prev)
+        handleClick()
+    }
+    const S = (s?: string) => {
+        return String(s)
     }
     return (
         <Stack
@@ -17,27 +27,13 @@ export const Fab = () => {
             direction="row"
             width="fit-content"
             height="100%"
-            position="fixed"
-            style={{
-                right: isActive ? 0 : '-1rem',
-                bottom: 0,
-            }}>
-            <Button text={isActive ? ">" : "<"} onClick={handleActive} />
-            <Stack
-                width={isActive ? '320px' : '0px'}
-                height="100%"
-                align="end"
-                style={{
-                    transition: 'all 300ms ease-in-out',
-                    background: `${theme?.palette.secondary}`,
-                    backdropFilter: 'blur(29px)'
-
-                }}>
-
-                <Chat width="100%" messages={[]} />
-
-            </Stack>
-
+        >
+            <Button
+                icon={isActive && !!icon_open && !!icon_close ? icon_close : icon_open}
+                text={isActive && !!text_open && !!text_close ? S(text_close) : S(text_open)}
+                onClick={handleActive}
+            />
+            {children}
         </Stack>
     )
 }

@@ -47,8 +47,11 @@ const lista = [
         id: uuidv4(),
         description: 'Este componente é uma função React chamada "Bubble", que recebe três propriedades: "label", "onComplete" e "className", todas do tipo "IBubble". A função retorna uma estrutura de árvore React com elementos aninhados. \n A estrutura da árvore começa com um componente "HightLigter", que envolve um componente "BubbleWrapper".Dentro do BubbleWrapper, há um div que é animado em resposta ao evento de passagem do mouse, e um componente "Stack" que contém um componente "Typing".O componente Typing é uma animação de texto, que exibe o texto do rótulo na tela como se estivesse sendo digitado. \n O componente Bubble usa o hook useState para controlar o estado de "hover".O hook useTheme é usado para acessar o tema atual.O componente recebe uma classe CSS adicional por meio da propriedade "className", que pode ser usada para estilizar o componente externamente.A propriedade "onComplete" é uma função de retorno de chamada que é acionada quando a animação do Typing é concluída.A propriedade "label" é uma string que é exibida pelo componente Typing. \n Este componente é usado para exibir uma bolha de conversa animada, com um rótulo sendo digitado lentamente na tela.A animação do rótulo é iniciada quando o mouse é movido sobre a bolha.O componente pode ser estilizado externamente por meio da classe CSS fornecida na propriedade "className".',
         code: `
-            <Bubble label={'aqui vamos testar o componente Bubble que se utiliza do componente Typing, HightLighter e Typography'} onComplete={()=>{}} />
-            
+            <Bubble 
+                sender='system' 
+                label={'aqui vamos testar o componente Bubble que se utiliza do componente Typing, HightLighter e Typography'} 
+                onComplete={()=>{}}
+            />            
             `,
         scope: { Bubble }
     },

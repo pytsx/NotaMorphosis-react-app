@@ -41,7 +41,6 @@ export const MainPage = () => {
                             : 0
             } />
             <MenuRight width={menuLateralWidth} isActive={menuRight} theme={theme} />
-            {/* <Chat messages={[]} /> */}
         </MainContainerStyled >
     )
 }
