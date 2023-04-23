@@ -31,7 +31,7 @@ export const Fab = ({ icon_open, handleClick, icon_close, text_close, text_open,
             height="100%"
         >
             <Button
-                bgcolor={`${theme?.palette.red}`}
+                bgcolor={`${theme?.palette.secondary}`}
                 icon={isActive && !!icon_open && !!icon_close ? icon_close : icon_open}
                 text={isActive && !!text_open && !!text_close ? S(text_close) : S(text_open)}
                 onClick={handleActive}

@@ -22,7 +22,7 @@ export const MenuRight = ({ width, isActive, theme }: IMenuLateral) => {
     return (
         <MenuLateral width={width} isActive={isActive}>
             <Stack width="100%" justify="end" style={{ padding: '.8rem' }}>
-                <Button onClick={() => handleCurrentTask(currentTask as ITask)} icon={<MdClose />} />
+                <Button bgcolor={`${theme?.palette.bgcolor}`} onClick={() => handleCurrentTask(currentTask as ITask)} icon={<MdClose />} />
             </Stack>
 
             <Stack direction="column" style={{ padding: '0rem .8rem 0 .4rem' }} >

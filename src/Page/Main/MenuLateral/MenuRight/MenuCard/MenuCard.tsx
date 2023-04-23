@@ -9,7 +9,7 @@ export const MenuCard = ({ children }: IMenyCard) => {
         < div style={{
             width: '100%',
             height: 'fit-content',
-            background: String(theme?.palette?.primary),
+            background: String(theme?.palette?.bgcolor),
             padding: '1.2rem .2rem .2rem .2rem'
         }
         }>
